@@ -2,13 +2,10 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加viewport设置 -->
+     <link rel="stylesheet" type="text/css" href="./fonts.css">
     <title>第<span id="aValue">2</span>題</title>
-    <link rel="stylesheet" type="text/css" href="./font2.css">
-
-   <link rel="stylesheet" type="text/css" href="./fonts.css">
-
-    <style>
+   <style>
   
 
 
@@ -39,10 +36,10 @@
         }
 
         h1 {
-            font-size: 55px; /* 标题字体大小改为 48px */
+            font-size: 72px; /* 标题字体大小改为 48px */
             font-weight: bold; /* 粗体 */
             color: #000000;
-            font-family: '新蒂香草體', cursive;/* 将标题字体更改为文鼎中鋼筆行楷 */
+            font-family: '新蒂香草體', cursive; /* 将标题字体更改为文鼎中鋼筆行楷 */
             animation: fadeInUp 1s forwards 1s; /* 向上淡入動畫，延遲1秒後開始 */
         }
  
@@ -58,7 +55,7 @@
         }
 
         p {
-            font-size: 40px; /* 內文文字大小改為 48px */
+            font-size: 60px; /* 內文文字大小改為 48px */
             text-align: center; /* 居中對齊 */
             opacity: 0; /* 初始設定內文不可見 */
             animation: fadeInUp 1s forwards 1.5s; /* 向上淡入動畫，延遲1.5秒後開始 */
@@ -75,7 +72,7 @@
             height: 200px;
 font-family: '新蒂香草體', cursive;
             line-height: 'front-size+5'px; /* 设置行高等于按钮高度，使文字垂直居中 */
-            font-size: 40px;
+            font-size: 50px;
             border-radius: 100px; /* 圆框 */
             background: linear-gradient(to right, #00BFFF, #FFFFFF); /* 随机渐变颜色，改为深蓝和浅蓝 */
             border: none;
@@ -87,7 +84,7 @@ font-family: '新蒂香草體', cursive;
     white-space: normal; /* 或者设置为 normal，根据需要选择 */
     
     /* 设置按钮的最小高度 */
-    min-height: 200px; /* 或者根据需要的高度 */
+    min-height: 100px; /* 或者根据需要的高度 */
 
  }
 
@@ -111,28 +108,23 @@ font-family: '新蒂香草體', cursive;
         }
 
         /* 使用媒體查詢調整字體大小和按鈕寬度 */
-       @media (max-width: 768px) {
+        @media (max-width: 768px) {
             h1 {
-                font-size: 80px; /* 调整标题字体大小 */
+                font-size: 36px; /* 在螢幕寬度小於768px時，減小標題字體大小 */
             }
             p {
-                font-size: 75px; /* 调整內文文字大小 */
+                font-size: 36px; /* 在螢幕寬度小於768px時，減小內文文字大小 */
             }
-           .button {
-                font-size: 70px; /* 在螢幕寬度小於768px時，減小按鈕字體大小 */
-                width: 80%; /* 在螢幕寬度小於768px時，按鈕寬度為父容器的80% */
-                height: 120px; /* 更改按钮高度为120px */
-                line-height: 120px; /* 文字垂直居中 */
+            .button {
+                font-size: 32px; /* 在螢幕寬度小於768px時，減小按鈕字體大小 */
+                 width: 100%;
+                height: 15px; /* 更改按钮高度为120px */
+                line-height: 120%; /* 文字垂直居中 */
+                
             }
-             .greeting-text {
-            font-size: 55px; /* 調整名字和"您好"的文字大小為45px */
-            color: #000000;
-            opacity: 0; /* 初始設定歡迎詞不可見 */
-            animation: fadeInUp 1s forwards 0.5s; /* 向上淡入動畫，延遲1秒後開始 */
-            position: absolute; /* 絕對定位 */
-            top: 10px; /* 上方位置 */
-            left: 10px; /* 左方位置 */
-        }
+            .greeting-text {
+            font-size: 30px; /* 調整名字和"您好"的文字大小為45px */
+                }
         }
     </style>
 </head>
