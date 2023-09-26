@@ -127,14 +127,13 @@ font-family: '新蒂香草體', cursive;
                 }
         }
     </style>
-       
-
 </head>
 <body>
     
     <div class="container">
         <h1>第  <span id="aValue">2</span>  題</h1>
-        <p>當遇到麻煩或不開心的事情時，誰會是讓你堅持下去的支柱？</p> <!-- 添加内文文字 -->
+        <p>﻿假如你今天參加一個很多人的活動(社團博覽會、迎新活動)，你會：</p> <!-- 添加内文文字 -->
+       
          <div class="parameter-list" style="display: none;">
             <!-- 显示接收到的参数 -->
             <p>E: <span id="eValue">0</span></p>
@@ -152,10 +151,11 @@ font-family: '新蒂香草體', cursive;
         </div>
 
         <div class="button-container">
-            <!-- 新增按钮，点击后执行指定操作 -->
-            <button class="button" id="updateButton" onclick="updateVariablesAndRedirect()">積極投入，不放過跟大家認識的機會</button>
-            <!-- 新增第二个按钮，点击后执行指定操作 -->
-            <button class="button" id="secondButton" onclick="updateIAndA()">看到人就累，期待著活動結束</button>
+           <!-- 新增按钮，点击后执行指定操作 -->
+<button class="button" id="updateButton" disabled onclick="updateVariablesAndRedirect()">積極投入，不放過跟大家認識的機會 </button>
+<!-- 新增第二个按钮，点击后执行指定操作 -->
+<button class="button" id="secondButton"disabled onclick="updateIAndA()">看到人就累，期待著活動結束 </button>
+
         </div>
     </div>
 
@@ -314,6 +314,13 @@ font-family: '新蒂香草體', cursive;
             greetingText.textContent = name + '，您好';
             document.body.appendChild(greetingText); // 將歡迎詞添加到body
         }
+// 启用按钮淡入
+setTimeout(() => {
+    document.getElementById('updateButton').removeAttribute('disabled');
+}, 2000); // 延迟2秒启用按钮
+setTimeout(() => {
+    document.getElementById('secondButton').removeAttribute('disabled');
+}, 2000); // 延迟2秒启用按钮
 
     </script>
 </body>

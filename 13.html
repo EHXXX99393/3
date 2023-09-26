@@ -127,14 +127,13 @@ font-family: '新蒂香草體', cursive;
                 }
         }
     </style>
-       
-
 </head>
 <body>
     
     <div class="container">
         <h1>第  <span id="aValue">2</span>  題</h1>
-        <p>當遇到麻煩或不開心的事情時，誰會是讓你堅持下去的支柱？</p> <!-- 添加内文文字 -->
+        <p>和某人分手或決裂時，你會：</p> <!-- 添加内文文字 -->
+       
          <div class="parameter-list" style="display: none;">
             <!-- 显示接收到的参数 -->
             <p>E: <span id="eValue">0</span></p>
@@ -152,10 +151,11 @@ font-family: '新蒂香草體', cursive;
         </div>
 
         <div class="button-container">
-            <!-- 新增按钮，点击后执行指定操作 -->
-            <button class="button" id="updateButton" onclick="updateVariablesAndRedirect()">放不下，陷入情緒中</button>
-            <!-- 新增第二个按钮，点击后执行指定操作 -->
-            <button class="button" id="secondButton" onclick="updateIAndA()">一刀兩斷二.五條</button>
+           <!-- 新增按钮，点击后执行指定操作 -->
+<button class="button" id="updateButton" disabled onclick="updateVariablesAndRedirect()">放不下，陷入情緒中 </button>
+<!-- 新增第二个按钮，点击后执行指定操作 -->
+<button class="button" id="secondButton"disabled onclick="updateIAndA()">一刀兩斷二.五條 </button>
+
         </div>
     </div>
 
@@ -282,7 +282,7 @@ font-family: '新蒂香草體', cursive;
 
         // 更新变量并跳转
         function updateVariablesAndRedirect() {
-            F+= 1; // 增加 E 变量的值
+            F += 1; // 增加 E 变量的值
             A += 1; // 增加 A 变量的值
             const randomFileName = generateRandomFileName();
             const redirectURL = `${randomFileName}?E=${E}&N=${N}&F=${F}&J=${J}&S=${S}&T=${T}&P=${P}&I=${I}&A=${A}&name=${name || ''}&cancel=${cancel.join(',') || ''}`;
@@ -314,6 +314,13 @@ font-family: '新蒂香草體', cursive;
             greetingText.textContent = name + '，您好';
             document.body.appendChild(greetingText); // 將歡迎詞添加到body
         }
+// 启用按钮淡入
+setTimeout(() => {
+    document.getElementById('updateButton').removeAttribute('disabled');
+}, 2000); // 延迟2秒启用按钮
+setTimeout(() => {
+    document.getElementById('secondButton').removeAttribute('disabled');
+}, 2000); // 延迟2秒启用按钮
 
     </script>
 </body>
