@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personality Type</title>
+</head>
+<body>
+    <div id="result" style="text-align: center;">
+        <!-- 结果将显示在这里 -->
+    </div>
+
+    <script>
+        // 获取前一页传递的参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const S = parseInt(urlParams.get('S')) || 0;
+        const E = parseInt(urlParams.get('E')) || 0;
+        const I = parseInt(urlParams.get('I')) || 0;
+        const F = parseInt(urlParams.get('F')) || 0;
+        const T = parseInt(urlParams.get('T')) || 0;
+        const P = parseInt(urlParams.get('P')) || 0;
+        const J = parseInt(urlParams.get('J')) || 0;
+        const N = parseInt(urlParams.get('N')) || 0;
+
+        // 定义函数来比较两个变量并返回更大的那个的名称
+        function getDominantTrait(a, b, aName, bName) {
+            if (a > b) {
+                return aName;
+            } else if (b > a) {
+                return bName;
+            } else {
+                return "balanced";
+            }
+        }
+
+        // 根据条件生成文本
+        const dominantEI = getDominantTrait(E, I, "E", "I");
+        const dominantSN = getDominantTrait(S, N, "S", "N");
+        const dominantFT = getDominantTrait(F, T, "F", "T");
+        const dominantJP = getDominantTrait(J, P, "J", "P");
+
+        const resultText = `${name}，您是${dominantEI}${dominantSN}${dominantFT}${dominantJP}类型的人`;
+
+        // 将结果显示在页面上
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = resultText;
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>測驗說明</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .banner {
+            text-align: center;
+            background-image: url('未命名設計 (13).png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 200px 0;
+            font-family: '新蒂香草體', cursive;
+            font-size: 150px;
+            color: #000000;
+        }
+
+        .welcome-section {
+            background-image: url('未命名設計 (11).png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            font-family: '新蒂香草體', cursive;
+            font-size: 36px;
+            color: #000000;
+            word-wrap: break-word;
+            white-space: pre-line;
+            line-height: 1.5;
+        }
+
+        /* 样式文本输入框 */
+        .input-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 24px;
+            width: 300px;
+            border: 5px solid #8B4513; /* 設定外框為木頭框，粗細5 */
+        }
+
+        /* 样式圆框按钮 */
+        .rounded-button {
+            padding: 10px 20px;
+            font-size: 48px; /* 将按钮内的字放大两倍 */
+            background: linear-gradient(45deg, #a653e8, #ffc900); /* 紫色斜渐变黄色 */
+            border: none;
+            cursor: pointer;
+            border-radius: 25px; /* 圆框形状 */
+            color: #ffffff;
+            transition: transform 1.3s ease-in-out; /* 添加缩放动画，增加1秒 */
+            pointer-events: none; /* 一開始關閉按鈕功能 */
+            font-family: '新蒂香草體', cursive; /* 將字體設定為新蒂香草體 */
+        }
+
+        /* 按钮悬停时的动画效果 */
+        .rounded-button:hover {
+            transform: scale(1.1); /* 鼠标悬停时放大到1.1倍 */
+        }
+
+        /* 逐行淡入动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 初始設定所有內文不可見 */
+        .welcome-section div, .rounded-button {
+            opacity: 0;
+        }
+
+        /* 为每行文字添加动画效果 */
+        .welcome-section div, .rounded-button {
+            animation: fadeIn 1.5s ease forwards; /* 增加1秒 */
+        }
+
+        /* 控制每行文字的淡入延迟，減少1.5秒 */
+        .welcome-section div:nth-child(1) {
+            animation-delay: 0s; /* 第一行延迟0秒 */
+        }
+
+        .welcome-section div:nth-child(2) {
+            animation-delay: 0.5s; /* 第二行延迟0.5秒 */
+        }
+
+        .welcome-section div:nth-child(3) {
+            animation-delay: 1s; /* 第三行延迟1秒 */
+        }
+
+        .welcome-section div:nth-child(4) {
+            animation-delay: 1.5s; /* 第四行延迟1.5秒 */
+        }
+
+        .welcome-section div:nth-child(5) {
+            animation-delay: 2s; /* 第五行延迟2秒 */
+        }
+
+        .welcome-section div:nth-child(6) {
+            animation-delay: 2.5s; /* 第六行延迟2.5秒 */
+        }
+
+        .welcome-section div:nth-child(7) {
+            animation-delay: 3s; /* 第七行延迟3秒 */
+        }
+
+        /* 控制按鈕的淡入延遲，減少1.5秒 */
+        .rounded-button {
+            animation-delay: 3.5s; /* 按钮延迟3.5秒 */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        測驗說明
+    </div>
+    <div class="welcome-section">
+        <div>
+            歡迎您來做我們茹義學小測驗，
+        </div>       <div>
+            此測驗是小小編親自設計，
+        </div>  <div>
+            接下來的問題皆為選擇題，
+        </div> <div>
+            結束之後會告訴您是屬於哪種類型的人，
+        </div><div>
+            也會有興趣、科系及職業參考，
+        </div><div>
+            希望大家能在這裡找到適合自己的「茹義學」。
+        </div>
+        <div class="input-container">
+            <label for="nameInput">請輸入您的名字：</label>
+            <input type="text" id="nameInput" required> <!-- 設定文字輸入框為必填 -->
+        </div> <div>
+            <input type="button" class="rounded-button" value="開始測驗" onclick="startTest()" id="startButton">
+        </div>
+    </div>
+
+    <script>
+        // 檢查文字輸入框是否有輸入內容，啟用或禁用按鈕
+        document.getElementById('nameInput').addEventListener('input', function () {
+            var startButton = document.getElementById('startButton');
+            if (this.value.trim() !== '') {
+                startButton.style.pointerEvents = 'auto'; // 啟用按鈕
+            } else {
+                startButton.style.pointerEvents = 'none'; // 禁用按鈕
+            }
+        });
+
+        function startTest() {
+            var name = document.getElementById('nameInput').value;
+
+            // 构建跳转链接，将name参数传递给下一个页面
+            var nextPageLink = `33333.html?name=${name}`;
+
+            // 设置当前窗口的位置到下一个页面
+            window.location.href = nextPageLink;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>第<span id="aValue">2</span>題</title>
+   <style>
+    @font-face {
+        font-family: 'HanyiSentyLotus';
+        src: url('path/to/網頁/HanyiSentyLotus.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: '新蒂香草體';
+        src: url('path/to/網頁/SentyVanilla.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+        /* 共用样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: '新蒂香草體', cursive;
+            text-align: left;
+            color: #000000;
+            /* 删除原始背景图像设置，我们将在JavaScript中动态设置 */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            padding: 50px;
+            text-align: center; /* 将容器内的文本和元素居中对齐 */
+            opacity: 0; /* 初始設定容器不可見 */
+            animation: fadeIn 1s forwards 1s; /* 淡入動畫，延遲0.5秒後開始 */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 72px; /* 标题字体大小改为 48px */
+            font-weight: bold; /* 粗体 */
+            color: #000000;
+            font-family: 'HanyiSentyLotus', cursive; /* 将标题字体更改为文鼎中鋼筆行楷 */
+            animation: fadeInUp 1s forwards 1s; /* 向上淡入動畫，延遲1秒後開始 */
+        }
+ 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        p {
+            font-size: 60px; /* 內文文字大小改為 48px */
+            text-align: center; /* 居中對齊 */
+            opacity: 0; /* 初始設定內文不可見 */
+            animation: fadeInUp 1s forwards 1.5s; /* 向上淡入動畫，延遲1.5秒後開始 */
+        }
+
+        .button-container {
+            margin-top: 10px;
+            opacity: 0; /* 初始設定按鈕不可見 */
+            animation: fadeInUp 1s forwards 2s; /* 向上淡入動畫，延遲1.5秒後開始 */
+        }
+
+        .button {
+            width: 600px;
+            height: 200px;
+font-family: '新蒂香草體', cursive;
+            line-height: 'front-size+5'px; /* 设置行高等于按钮高度，使文字垂直居中 */
+            font-size: 50px;
+            border-radius: 100px; /* 圆框 */
+            background: linear-gradient(to right, #00BFFF, #FFFFFF); /* 随机渐变颜色，改为深蓝和浅蓝 */
+            border: none;
+            margin: 0 auto;
+            display: block;
+            text-align: center; /* 水平居中 */
+            margin-bottom: 50px; /* 添加下边距 */
+         /* 控制文本换行行为 */
+    white-space: normal; /* 或者设置为 normal，根据需要选择 */
+    
+    /* 设置按钮的最小高度 */
+    min-height: 200px; /* 或者根据需要的高度 */
+
+ }
+
+        /* 新增樣式用於名字和您好 */
+        .greeting-text {
+            font-size: 45px; /* 調整名字和"您好"的文字大小為45px */
+            color: #000000;
+            opacity: 0; /* 初始設定歡迎詞不可見 */
+            animation: fadeInUp 1s forwards 0.5s; /* 向上淡入動畫，延遲1秒後開始 */
+            position: absolute; /* 絕對定位 */
+            top: 10px; /* 上方位置 */
+            left: 10px; /* 左方位置 */
+        }
+
+        .parameter-list {
+            font-size: 20px;
+            color: #000000;
+            text-align: left;
+            opacity: 0; /* 初始設定參數列表不可見 */
+            animation: fadeInUp 1s forwards 1s; /* 向上淡入動畫，延遲1秒後開始 */
+        }
+
+        /* 使用媒體查詢調整字體大小和按鈕寬度 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px; /* 在螢幕寬度小於768px時，減小標題字體大小 */
+            }
+            p {
+                font-size: 36px; /* 在螢幕寬度小於768px時，減小內文文字大小 */
+            }
+            .button {
+                font-size: 24px; /* 在螢幕寬度小於768px時，減小按鈕字體大小 */
+                width: 80%; /* 在螢幕寬度小於768px時，按鈕寬度為父容器的80% */
+                height: 120px; /* 更改按钮高度为120px */
+                line-height: 120px; /* 文字垂直居中 */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>第  <span id="aValue">2</span>  題</h1>
+        <p>哪件事情最常出現？</p> <!-- 添加内文文字 -->
+       
+         <div class="parameter-list" style="display: none;">
+            <!-- 显示接收到的参数 -->
+            <p>E: <span id="eValue">0</span></p>
+            <p>N: <span id="nValue">0</span></p>
+            <p>F: <span id="fValue">0</span></p>
+            <p>J: <span id="jValue">0</span></p>
+            <p>S: <span id="sValue">0</span></p>
+            <p>T: <span id="tValue">0</span></p>
+            <p>P: <span id="pValue">0</span></p>
+            <p>I: <span id="iValue">0</span></p>
+            <p>A: <span id="aValue">2</span></p>
+            <p>Name: <span id="nameValue"></span></p>
+            <p>Cancel: <span id="cancelValue"></span></p>
+            <p>Random File: <span id="randomFileValue"></span></p>
+        </div>
+
+        <div class="button-container">
+            <!-- 新增按钮，点击后执行指定操作 -->
+            <button class="button" id="updateButton" onclick="updateVariablesAndRedirect()">我超早到結果其他人都沒出現</button>
+            <!-- 新增第二个按钮，点击后执行指定操作 -->
+            <button class="button" id="secondButton" onclick="updateIAndA()">我是最後壓軸出場的主角</button>
+        </div>
+    </div>
+
+    <script>
+        // 初始化 cancel 为空数组
+        let cancel = [];
+         // 背景图像文件名数组
+        let backgroundImages = [
+            "1.png",
+            "2.png",
+            "3.png",
+            "4.png",
+            "5.png",
+            "6.png",
+            "7.png",
+            "8.png",
+            "9.png",
+            "10.png",
+            "11.png",
+            "12.png",
+            "13.png",
+            "14.png",
+            "15.png",
+            "16.png",
+            "17.png",
+            "18.png",
+            "19.png",
+            "20.png"
+        ];
+         // 生成随机背景图像文件名
+        function generateRandomBackgroundImage() {
+            const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+            return backgroundImages[randomIndex];
+        }
+
+        // 设置随机背景图像
+        function setRandomBackgroundImage() {
+            const randomBackgroundImage = generateRandomBackgroundImage();
+            document.body.style.backgroundImage = `url('${randomBackgroundImage}')`;
+        }
+
+        // 在页面加载时设置随机背景图像
+        setRandomBackgroundImage();
+        // 获取前一页传递的参数
+        const urlParams = new URLSearchParams(window.location.search);
+        let E = parseInt(urlParams.get('E')) || 0;
+        let N = parseInt(urlParams.get('N')) || 0;
+        let F = parseInt(urlParams.get('F')) || 0;
+        let J = parseInt(urlParams.get('J')) || 0;
+        let S = parseInt(urlParams.get('S')) || 0;
+        let T = parseInt(urlParams.get('T')) || 0;
+        let P = parseInt(urlParams.get('P')) || 0;
+        let I = parseInt(urlParams.get('I')) || 0;
+        let A = parseInt(urlParams.get('A')) || 1; // 初始值为 2
+        const name = urlParams.get('name');
+
+        // 获取前一页的 cancel 参数
+        const prevCancelParam = urlParams.get('cancel');
+        if (prevCancelParam) {
+            // 将前一页的 cancel 参数拆分为数组，并添加到当前页面的 cancel
+            const prevCancelArray = prevCancelParam.split(',');
+            cancel = [...cancel, ...prevCancelArray];
+        }
+
+        // 获取当前页面的文件名并添加到 cancel 数组
+        const currentPageName = window.location.pathname.split('/').pop();
+        cancel.push(currentPageName);
+
+        // 随机文件名数组
+        let fileNames = [
+            "4.html",
+            "5.html",
+            "6.html",
+            "8.html",
+            "9.html",
+            "10.html",
+            "11.html",
+            "12.html",
+            "13.html",
+            "14.html",
+            "15.html",
+            "16.html",
+            "17.html",
+            "18.html",
+            "19.html",
+            "20.html",
+            "21.html",
+            "22.html",
+            "23.html",
+            "7.html",
+        ];
+
+        // 生成随机文件名
+        function generateRandomFileName() {
+            // 过滤掉与 cancel 中相同的文件名
+            const availableFileNames = fileNames.filter(fileName => !cancel.includes(fileName));
+            const randomIndex = Math.floor(Math.random() * availableFileNames.length);
+            return availableFileNames[randomIndex];
+        }
+
+       // 更新页面内容
+        function updatePageContent() {
+            document.getElementById('eValue').textContent = E;
+            document.getElementById('nValue').textContent = N;
+            document.getElementById('fValue').textContent = F;
+            document.getElementById('jValue').textContent = J;
+            document.getElementById('sValue').textContent = S;
+            document.getElementById('tValue').textContent = T;
+            document.getElementById('pValue').textContent = P;
+            document.getElementById('iValue').textContent = I;
+            document.getElementById('aValue').textContent = A;
+            document.getElementById('nameValue').textContent = name || 'N/A';
+            document.getElementById('cancelValue').textContent = cancel.join(', ') || 'N/A';
+
+            const randomFileName = generateRandomFileName();
+            document.getElementById('randomFileValue').textContent = randomFileName;
+
+          // 如果随机文件名为空，更改选项一和选项二的传递参数为跳转到end.html
+            if (!randomFileName) {
+                document.getElementById('updateButton').onclick = redirectToEndPage;
+                document.getElementById('secondButton').onclick = redirectToEndPage;
+            }
+        }
+
+        // 更新变量并跳转
+        function updateVariablesAndRedirect() {
+            J += 1; // 增加 E 变量的值
+            A += 1; // 增加 A 变量的值
+            const randomFileName = generateRandomFileName();
+            const redirectURL = `${randomFileName}?E=${E}&N=${N}&F=${F}&J=${J}&S=${S}&T=${T}&P=${P}&I=${I}&A=${A}&name=${name || ''}&cancel=${cancel.join(',') || ''}`;
+            window.location.href = redirectURL;
+        }
+
+        // 跳转到end.html
+        function redirectToEndPage() {
+            const redirectURL = `end.html?E=${E}&N=${N}&F=${F}&J=${J}&S=${S}&T=${T}&P=${P}&I=${I}&A=${A}&name=${name || ''}&cancel=${cancel.join(',') || ''}`;
+            window.location.href = redirectURL;
+        }
+
+        // 更新变量 A 和 I 并跳转
+        function updateIAndA() {
+            P += 1; // 增加 I 变量的值
+            A += 1; // 增加 A 变量的值
+            const randomFileName = generateRandomFileName();
+            const redirectURL = `${randomFileName}?E=${E}&N=${N}&F=${F}&J=${J}&S=${S}&T=${T}&P=${P}&I=${I}&A=${A}&name=${name || ''}&cancel=${cancel.join(',') || ''}`;
+            window.location.href = redirectURL;
+        }
+
+        // 初始页面内容
+        updatePageContent();
+
+        // 更新名字欢迎文本
+        if (name) {
+            const greetingText = document.createElement('div'); // 新增一个 div 元素
+            greetingText.className = 'greeting-text';
+            greetingText.textContent = name + '，您好';
+            document.body.appendChild(greetingText); // 將歡迎詞添加到body
+        }
+
+    </script>
+</body>
+</html>
