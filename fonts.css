@@ -4,9 +4,8 @@
     font-weight: normal;
     font-style: normal;
 }
- @font-face {
-    font-family: '文鼎剛';
-    src: url('./HanyiSentyPagoda.ttf);') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+@font-face {
+ font-family: 'astralweb';
+ src: url('astralweb.woff2') format('woff2'),
+      url('astralweb.woff') format('woff');
 }
