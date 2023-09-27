@@ -1,1 +1,20 @@
-安裝字體.py
+
+```python
+import subprocess
+
+# 定义要安装的字体文件名
+font_filename = 'SentyVanilla.ttf'
+
+# 使用包管理器来查找包含此字体的包（这里使用apt-file）
+command = f'apt-file search {font_filename}'
+result = subprocess.check_output(command, shell=True)
+
+# 打印查找结果，找到包含字体文件的包名
+print(result.decode())
+
+# 然后使用包管理器安装包含字体文件的包
+# 假设找到的包名为font-package-name
+font_package_name = 'font-package-name'
+install_command = f'sudo apt-get install -y {font_package_name}'
+subprocess.call(install_command, shell=True)
+```
