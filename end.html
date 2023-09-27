@@ -62,98 +62,104 @@
         const dominantSN = getDominantTrait(S, N, "S", "N");
         const dominantFT = getDominantTrait(F, T, "F", "T");
         const dominantJP = getDominantTrait(J, P, "J", "P");
-         const resultComparison = `${dominantEI}${dominantSN}${dominantFT}${dominantJP}`;
+        const resultComparison = `${dominantEI}${dominantSN}${dominantFT}${dominantJP}`;
 
-        let resultText = `${name}，您是${dominantEI}${dominantSN}${dominantFT}${dominantJP}类型的人`;
+        // 构建完整的结果文本
+        let resultText = `${name}，您是${resultComparison}类型的人`;
 
         // 根据不同的结果设置文本和图像
         let textToSet = resultText;
         let imageSrc = "your-image-url.jpg"; // 默认图像 URL
         let imageAlt = "Your Image"; // 默认图像替代文本
 
-        switch (resultComparison) {
-            case "ISFJ":
-                textToSet = "奉獻者";
-                imageSrc = "奉獻者型.png";
-                imageAlt = "奉獻者型";
-                break;
-            case "ISTJ":
-                textToSet = "守護者";
-                imageSrc = "守護者型.png";
-                imageAlt = "守護者型";
-                break;
-            case "ESTJ":
-                textToSet = "統御者";
-                imageSrc = "統御者型.png";
-                imageAlt = "統御者型";
-                break;
-            case "ESFJ":
-                textToSet = "調化者";
-                imageSrc = "調化者型.png";
-                imageAlt = "調化者型";
-                break;
-            case "ISTP":
-                textToSet = "冒險家";
-                imageSrc = "冒險家型.png";
-                imageAlt = "冒險家型";
-                break;
-            case "ISFP":
-                textToSet = "逍遙者";
-                imageSrc = "逍遙者型.png";
-                imageAlt = "逍遙者型";
-                break;
-            case "ESTP":
-                textToSet = "挑戰者";
-                imageSrc = "挑戰者型.png";
-                imageAlt = "挑戰者型";
-                break;
-            case "ESFP":
-                textToSet = "耀光者";
-                imageSrc = "耀光者型.png";
-                imageAlt = "耀光者型";
-                break;
-            case "INFJ":
-                textToSet = "文筆仙";
-                imageSrc = "文筆仙型.png";
-                imageAlt = "文筆仙型";
-                break;
-            case "INFP":
-                textToSet = "調靈者";
-                imageSrc = "調靈者型.png";
-                imageAlt = "調靈者型";
-                break;
-            case "ENFJ":
-                textToSet = "育化者";
-                imageSrc = "育化者型.png";
-                imageAlt = "育化者型";
-                break;
-            case "ENFP":
-                textToSet = "夢想家";
-                imageSrc = "夢想家型.png";
-                imageAlt = "夢想家型";
-                break;
-            case "INTJ":
-                textToSet = "專業者";
-                imageSrc = "專業者型.png";
-                imageAlt = "專業者型";
-                break;
-            case "INTP":
-                textToSet = "學術家";
-                imageSrc = "學術家型.png";
-                imageAlt = "學術家型";
-                break;
-            case "ENTJ":
-                textToSet = "決斷者";
-                imageSrc = "決斷者型.png";
-                imageAlt = "決斷者型";
-                break;
-            case "ENTP":
-                textToSet = "創造者";
-                imageSrc = "創造者型.png";
-                imageAlt = "創造者型";
-                break;
-            default:
-                break;
+        // 当E和I、N和S、F和T、J和P比较分数平分时，随机选择一个结果
+        if (dominantEI === "balanced" || dominantSN === "balanced" || dominantFT === "balanced" || dominantJP === "balanced") {
+            const randomIndex = Math.floor(Math.random() * 16); // 生成0到15之间的随机整数
+
+            switch (randomIndex) {
+                case 0:
+                    textToSet = "奉獻者";
+                    imageSrc = "奉獻者型.png";
+                    imageAlt = "奉獻者型";
+                    break;
+                case 1:
+                    textToSet = "守護者";
+                    imageSrc = "守護者型.png";
+                    imageAlt = "守護者型";
+                    break;
+                case 2:
+                    textToSet = "統御者";
+                    imageSrc = "統御者型.png";
+                    imageAlt = "統御者型";
+                    break;
+                case 3:
+                    textToSet = "調化者";
+                    imageSrc = "調化者型.png";
+                    imageAlt = "調化者型";
+                    break;
+                case 4:
+                    textToSet = "冒險家";
+                    imageSrc = "冒險家型.png";
+                    imageAlt = "冒險家型";
+                    break;
+                case 5:
+                    textToSet = "逍遙者";
+                    imageSrc = "逍遙者型.png";
+                    imageAlt = "逍遙者型";
+                    break;
+                case 6:
+                    textToSet = "挑戰者";
+                    imageSrc = "挑戰者型.png";
+                    imageAlt = "挑戰者型";
+                    break;
+                case 7:
+                    textToSet = "耀光者";
+                    imageSrc = "耀光者型.png";
+                    imageAlt = "耀光者型";
+                    break;
+                case 8:
+                    textToSet = "文筆仙";
+                    imageSrc = "文筆仙型.png";
+                    imageAlt = "文筆仙型";
+                    break;
+                case 9:
+                    textToSet = "調靈者";
+                    imageSrc = "調靈者型.png";
+                    imageAlt = "調靈者型";
+                    break;
+                case 10:
+                    textToSet = "育化者";
+                    imageSrc = "育化者型.png";
+                    imageAlt = "育化者型";
+                    break;
+                case 11:
+                    textToSet = "夢想家";
+                    imageSrc = "夢想家型.png";
+                    imageAlt = "夢想家型";
+                    break;
+                case 12:
+                    textToSet = "專業者";
+                    imageSrc = "專業者型.png";
+                    imageAlt = "專業者型";
+                    break;
+                case 13:
+                    textToSet = "學術家";
+                    imageSrc = "學術家型.png";
+                    imageAlt = "學術家型";
+                    break;
+                case 14:
+                    textToSet = "決斷者";
+                    imageSrc = "決斷者型.png";
+                    imageAlt = "決斷者型";
+                    break;
+                case 15:
+                    textToSet = "創造者";
+                    imageSrc = "創造者型.png";
+                    imageAlt = "創造者型";
+                    break;
+                default:
+                    break;
+            }
         }
 
         // 设置文本和图像
