@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Personality Type</title>
+    <style>
+        /* 添加样式以将文本和图像放置在左侧和右侧 */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .image {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div id="result" style="text-align: center;">
-        <!-- 结果将显示在这里 -->
+    <div id="result" class="container">
+        <div class="text">
+            <!-- 结果文本将显示在这里 -->
+        </div>
+        <div class="image">
+            <img src="your-image-url.jpg" alt="Your Image">
+        </div>
     </div>
 
     <script>
@@ -38,12 +62,107 @@
         const dominantSN = getDominantTrait(S, N, "S", "N");
         const dominantFT = getDominantTrait(F, T, "F", "T");
         const dominantJP = getDominantTrait(J, P, "J", "P");
+         const resultComparison = `${dominantEI}${dominantSN}${dominantFT}${dominantJP}`;
 
-        const resultText = `${name}，您是${dominantEI}${dominantSN}${dominantFT}${dominantJP}类型的人`;
+        let resultText = `${name}，您是${dominantEI}${dominantSN}${dominantFT}${dominantJP}类型的人`;
 
-        // 将结果显示在页面上
-        const resultDiv = document.getElementById('result');
-        resultDiv.textContent = resultText;
+        // 根据不同的结果设置文本和图像
+        let textToSet = resultText;
+        let imageSrc = "your-image-url.jpg"; // 默认图像 URL
+        let imageAlt = "Your Image"; // 默认图像替代文本
+
+        switch (resultComparison) {
+            case "ISFJ":
+                textToSet = "奉獻者";
+                imageSrc = "奉獻者型.png";
+                imageAlt = "奉獻者型";
+                break;
+            case "ISTJ":
+                textToSet = "守護者";
+                imageSrc = "守護者型.png";
+                imageAlt = "守護者型";
+                break;
+            case "ESTJ":
+                textToSet = "統御者";
+                imageSrc = "統御者型.png";
+                imageAlt = "統御者型";
+                break;
+            case "ESFJ":
+                textToSet = "調化者";
+                imageSrc = "調化者型.png";
+                imageAlt = "調化者型";
+                break;
+            case "ISTP":
+                textToSet = "冒險家";
+                imageSrc = "冒險家型.png";
+                imageAlt = "冒險家型";
+                break;
+            case "ISFP":
+                textToSet = "逍遙者";
+                imageSrc = "逍遙者型.png";
+                imageAlt = "逍遙者型";
+                break;
+            case "ESTP":
+                textToSet = "挑戰者";
+                imageSrc = "挑戰者型.png";
+                imageAlt = "挑戰者型";
+                break;
+            case "ESFP":
+                textToSet = "耀光者";
+                imageSrc = "耀光者型.png";
+                imageAlt = "耀光者型";
+                break;
+            case "INFJ":
+                textToSet = "文筆仙";
+                imageSrc = "文筆仙型.png";
+                imageAlt = "文筆仙型";
+                break;
+            case "INFP":
+                textToSet = "調靈者";
+                imageSrc = "調靈者型.png";
+                imageAlt = "調靈者型";
+                break;
+            case "ENFJ":
+                textToSet = "育化者";
+                imageSrc = "育化者型.png";
+                imageAlt = "育化者型";
+                break;
+            case "ENFP":
+                textToSet = "夢想家";
+                imageSrc = "夢想家型.png";
+                imageAlt = "夢想家型";
+                break;
+            case "INTJ":
+                textToSet = "專業者";
+                imageSrc = "專業者型.png";
+                imageAlt = "專業者型";
+                break;
+            case "INTP":
+                textToSet = "學術家";
+                imageSrc = "學術家型.png";
+                imageAlt = "學術家型";
+                break;
+            case "ENTJ":
+                textToSet = "決斷者";
+                imageSrc = "決斷者型.png";
+                imageAlt = "決斷者型";
+                break;
+            case "ENTP":
+                textToSet = "創造者";
+                imageSrc = "創造者型.png";
+                imageAlt = "創造者型";
+                break;
+            default:
+                break;
+        }
+
+        // 设置文本和图像
+        const resultDiv = document.querySelector('.text');
+        resultDiv.textContent = textToSet;
+
+        const image = document.querySelector('.image img');
+        image.src = imageSrc;
+        image.alt = imageAlt;
     </script>
 </body>
 </html>
