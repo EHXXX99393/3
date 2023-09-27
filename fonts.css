@@ -1,11 +1,11 @@
  @font-face {
     font-family: '新蒂香草體';
-    src: url('./SentyVanilla.ttf') format('truetype');
+    src: url('./SentyVanilla.woff2') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
  font-family: 'astralweb';
- src: url('astralweb.woff2') format('woff2'),
-      url('astralweb.woff') format('woff');
+ src: url('SentyVanilla.woff2') format('woff2'),
+      url('SentyVanilla.woff2') format('woff');
 }
