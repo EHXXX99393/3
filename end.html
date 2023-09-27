@@ -1,43 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加viewport设置 -->
-    <link rel="stylesheet"href="fonts.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Personality Type</title>
+    <link rel="stylesheet" href="fonts.css">
     <style>
-        /* 添加样式以将文本和图像放置在左侧和右侧 */
-        .banner {
+        body {
+            margin: 0;
+            padding: 0;
             background-image: url('結果背景2.png');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px; /* 调整背景3的宽度为400px */
+            height: 100px; /* 高度占满整个视窗 */
+            background-image: url('結果背景3.png');
+            background-repeat: no-repeat;
+            z-index: 2; /* 将背景3设置为顶图 */
+            opacity: 0;
+            animation: fadeInBackground3 1.5s ease-out 0.5s forwards;
+        }
+
+        .background1 {
+            position: absolute;
+            bottom: -48%;
+            left: 1%;
+            width: 100%; /* 调整背景3的宽度为400px */
+            height: 400px; /* 高度占满整个视窗 */
+            background-image: url('結果背景1.png');
+            background-repeat: no-repeat;
+            z-index: 2; /* 将背景3设置为顶图 */
+            opacity: 0;
+            animation: fadeInBackground1 1.5s ease-out 1s forwards;
+        }
+
         .container {
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            position: relative;
+            height: 100%;
         }
 
         .text {
             flex: 1;
             padding: 40px;
             font-family: '新蒂香草體', cursive;
+            font-size: 120px;
+            opacity: 0;
+            animation: fadeInText 0.5s ease-out 1.5s forwards;
         }
 
         .image {
             flex: 1;
             padding: 20px;
+            opacity: 0;
+            animation: fadeInImage 0.5s ease-out 2s forwards;
+        }
+
+        /* 新增樣式用於名字和您好 */
+        .greeting-text {
+              font-family: '新蒂香草體', cursive;
+            font-size: 45px; /* 調整名字和"您好"的文字大小為45px */
+            color: #000000;
+            opacity: 0; /* 初始設定歡迎詞不可見 */
+            animation: fadeInUp 1.5s forwards 1s; /* 向上淡入動畫，延遲1秒後開始 */
+            position: absolute; /* 絕對定位 */
+            top: 180px; /* 上方位置 */
+            left: 300px; /* 左方位置 */
+        }
+
+        @keyframes fadeInBackground3 {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInBackground1 {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInImage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 添加媒体查询以在小屏幕上更改布局 */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column; /* 切换为上图下文布局 */
+            }
+
+            .text {
+                font-size: 60px; /* 调整文本字体大小 */
+            }
+
+            .greeting-text {
+                top: 20px; /* 更新名字和"您好"的位置 */
+                left: 10px;
+            }
+
+            .image {
+                order: -1; /* 将图像置于文本上方 */
+                margin-top: 20px; /* 添加一些上边距 */
+            }
         }
     </style>
 </head>
 <body>
-    <div id="result" class="container">
-        <div class="text">
-            <!-- 结果文本将显示在这里 -->
-        </div>
-        <div class="image">
-            <img src="your-image-url.jpg" alt="Your Image">
+    <div class="banner">
+        <div class="background3"></div>
+        <div class="background1"></div>
+        <div class="container">
+            <div class="greeting-text">
+                <!-- 欢迎词将显示在这里 -->
+            </div>
+            <div class="text">
+                <!-- 结果文本将显示在这里 -->
+            </div>
+            <div class="image">
+                <img src="your-image-url.jpg" alt="Your Image">
+            </div>
         </div>
     </div>
 
@@ -72,7 +204,7 @@
         const dominantSN = getDominantTrait(S, N, "S", "N");
         const dominantFT = getDominantTrait(F, T, "F", "T");
         const dominantJP = getDominantTrait(J, P, "J", "P");
-         const resultComparison = `${dominantEI}${dominantSN}${dominantFT}${dominantJP}`;
+        const resultComparison = `${dominantEI}${dominantSN}${dominantFT}${dominantJP}`;
 
         let resultText = `${name}，您是${dominantEI}${dominantSN}${dominantFT}${dominantJP}类型的人`;
 
@@ -173,6 +305,12 @@
         const image = document.querySelector('.image img');
         image.src = imageSrc;
         image.alt = imageAlt;
+
+        // 更新名字欢迎文本
+        if (name) {
+            const greetingText = document.querySelector('.greeting-text'); // 选择已存在的欢迎文本元素
+            greetingText.textContent = name + '，您是'; // 更新欢迎文本内容
+        }
     </script>
 </body>
 </html>
