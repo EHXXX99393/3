@@ -165,15 +165,10 @@
         margin: 0 auto; /* 居中图片 */
     }
         }
-          .background1 {
-            position: absolute;
-            bottom: -50%;
-            left: 1%;
-            width: 100%; /* 调整背景3的宽度为400px */
-            height: 400px; /* 高度占满整个视窗 */
-            background-image: url('結果背景1.png');
-            background-repeat: no-repeat;
-            z-index: 2; /* 将背景3设置为顶图 */
+.background1 {
+        bottom: 0; /* 将底部属性设置为0以使其位于底部 */
+        height: auto; /* 移除固定高度，以便内容可以占用所需的高度 */
+        padding-bottom: 20px; /* 添加一些底部内边距，以防止内容与底部重叠 */ /* 将背景3设置为顶图 */
             opacity: 0;
             animation: fadeInBackground1 1.5s ease-out 1s forwards;
         }
