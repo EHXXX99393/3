@@ -9,12 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('結果背景2.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
         }
-
         .banner {
             position: relative;
             width: 100%;
@@ -24,26 +19,39 @@
 
         .background3 {
             position: absolute;
-            top: -15%;
-            left: 0%;
-            width: 120%; /* 调整背景3的宽度为400px */
-            height: 300px; /* 高度占满整个视窗 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('結果背景2.png');
+            background-repeat: no-repeat;
+            z-index: 0;
+            opacity: 0;
+            animation: fadeInBackground3 1.5s ease-out 1s forwards;
+        }
+
+        .back2 {
+            position: absolute;
+            top: -10%;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('結果背景3.png');
             background-repeat: no-repeat;
-            z-index: 2; /* 将背景3设置为顶图 */
+            z-index: 3;
             opacity: 0;
-            animation: fadeInBackground3 1.5s ease-out 0.5s forwards;
+            animation: fadeInBack2 1s ease-out 0.5s forwards;
         }
 
         .background1 {
             position: absolute;
             bottom: -50%;
             left: 1%;
-            width: 100%; /* 调整背景3的宽度为400px */
-            height: 400px; /* 高度占满整个视窗 */
+            width: 100%;
+            height: 400px;
             background-image: url('結果背景1.png');
             background-repeat: no-repeat;
-            z-index: 2; /* 将背景3设置为顶图 */
+            z-index: 2;
             opacity: 0;
             animation: fadeInBackground1 1.5s ease-out 1s forwards;
         }
@@ -74,16 +82,15 @@
             animation: fadeInImage 0.5s ease-out 2s forwards;
         }
 
-        /* 新增樣式用於名字和您好 */
         .greeting-text {
-              font-family: '新蒂香草體', cursive;
-            font-size: 45px; /* 調整名字和"您好"的文字大小為45px */
+            font-family: '新蒂香草體', cursive;
+            font-size: 45px;
             color: #000000;
-            opacity: 0; /* 初始設定歡迎詞不可見 */
-            animation: fadeInUp 1.5s forwards 1s; /* 向上淡入動畫，延遲1秒後開始 */
-            position: absolute; /* 絕對定位 */
-            top: 180px; /* 上方位置 */
-            left: 300px; /* 左方位置 */
+            opacity: 0;
+            animation: fadeInUp 1.5s forwards 1s;
+            position: absolute;
+            top: 180px;
+            left: 300px;
         }
 
         @keyframes fadeInBackground3 {
@@ -92,6 +99,17 @@
             }
             100% {
                 opacity: 1;
+            }
+        }
+
+        @keyframes fadeInBack2 {
+            0% {
+                opacity: 0;
+transform: translateY(-20%);
+            }
+            100% {
+                opacity: 1;
+transform: translateY(0%);
             }
         }
 
@@ -135,48 +153,40 @@
             }
         }
 
-        /* 添加媒体查询以在小屏幕上更改布局 */
-      @media screen and (max-width: 768px) {
-    .background1 {
-        bottom: -20%; /* 在小屏幕上设置 bottom 为 -20% */
-    }
-          .background3 {
-              hight:50%；}
-            .container {
-                flex-direction: column; /* 切换为上图下文布局 */
+        @media screen and (max-width: 768px) {
+            .background1 {
+                bottom: -20%;
             }
-
+            .container {
+                flex-direction: column;
+            }
             .text {
-        font-size: 60px; /* 调整文本字体大小 */
-        margin-top: 180px; /* 将文字向下移动，可以根据需要进行微调 */
-        order: 1; /* 更改文本的顺序，使其在图像之后显示 */
-    }
-
+                font-size: 60px;
+                margin-top: 180px;
+                order: 1;
+            }
             .greeting-text {
-                top: 15%; /* 更新名字和"您好"的位置 */
+                top: 15%;
                 left: 3%;
             }
-
-                .image {
-        text-align: center; /* 水平居中图片 */
-         margin-top: -125%;
-                    order: 2; /* 上边距为60px */
-    }
-
-    .image img {
-        max-width: 100%; /* 图片宽度最大为父容器的100% */
-        height: auto; /* 图片高度自动调整以保持比例 */
-        display: block; /* 去掉默认的图像间距 */
-        margin: 0 auto; /* 居中图片 */
-    }
-       
- 
-             }
+            .image {
+                text-align: center;
+                margin-top: -125%;
+                order: 2;
+            }
+            .image img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="banner">
         <div class="background3"></div>
+        <div class="back2"></div>
         <div class="background1"></div>
         <div class="container">
             <div class="greeting-text">
@@ -326,8 +336,8 @@
 
         // 更新名字欢迎文本
         if (name) {
-            const greetingText = document.querySelector('.greeting-text'); // 选择已存在的欢迎文本元素
-            greetingText.textContent = name + '，您是'; // 更新欢迎文本内容
+            const greetingText = document.querySelector('.greeting-text');
+            greetingText.textContent = name + '，您是';
         }
     </script>
 </body>
