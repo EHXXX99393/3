@@ -136,7 +136,10 @@
         }
 
         /* 添加媒体查询以在小屏幕上更改布局 */
-        @media screen and (max-width: 768px) {
+      @media screen and (max-width: 768px) {
+    .background1 {
+        bottom: -20%; /* 在小屏幕上设置 bottom 为 -20% */
+    }
             .container {
                 flex-direction: column; /* 切换为上图下文布局 */
             }
