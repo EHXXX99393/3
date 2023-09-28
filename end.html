@@ -151,14 +151,17 @@
                 left: 3%;
             }
 
-            .image {
-                order: -1; /* 将图像置于文本上方 */
-                margin-top: 60px; margin: 0; /* 添加一些上边距 */
-               max-width: 200px; /* 图片宽度最大为父容器的100% */
-                height: auto;
-                
-            
-            }
+                .image {
+        text-align: center; /* 水平居中图片 */
+        padding-top: 60px; /* 上边距为60px */
+    }
+
+    .image img {
+        max-width: 100%; /* 图片宽度最大为父容器的100% */
+        height: auto; /* 图片高度自动调整以保持比例 */
+        display: block; /* 去掉默认的图像间距 */
+        margin: 0 auto; /* 居中图片 */
+    }
         }
     </style>
 </head>
