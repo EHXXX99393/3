@@ -1,16 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    
-  <link rel="stylesheet"href="fonts.css">
-
+    <link rel="stylesheet" href="fonts.css">
     <meta charset="UTF-8">
     <title>茹義學生涯小測驗</title>
     <style>
-        body 
-         
-        {
-           font-family: '新蒂香草體',  cursive;
+       /* 加载动画的样式 */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* 垂直排列内容 */
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1.5s ease;
+}
+
+.loader-bar {
+    width: 200px;
+    height: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loader-progress {
+    width: 100%;
+    height: 100%;
+    background-color: #3498db; /* 加载条的颜色（蓝色） */
+    animation: progress 3s linear reverse; /* 反向加载动画，从右到左 */
+}
+
+@keyframes progress {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+
+       /* 加载时的图片样式 */
+.loading-image {
+    width: 100px;
+    height: 50px;
+    
+  
+  
+    
+    animation: moveImage 3s linear reverse; /* 图片移动动画，反向 */
+}
+
+@keyframes moveImage {
+    0% {
+        transform: translateX(80%); /* 图片初始位置 */
+    }
+    100% {
+        transform: translateX(-70%); /* 图片移动到右侧 */
+    }
+}
+
+
+
+
+
+
+
+        /* 其余的样式保持不变 */
+        body {
+            font-family: '新蒂香草體', cursive;
             margin: 0;
             padding: 0;
             background-image: url('未命名 (450 × 350 像素) (15).png');
@@ -18,34 +83,43 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+
         .cover {
             position: relative;
             z-index: 1;
         }
+
         .cover img {
             width: 100%;
             max-height: 1400px;
             object-fit: cover;
         }
+
         .overlay {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             text-align: center;
             position: relative;
             z-index: 0;
-            font-family: '新蒂香草體',  cursive; /* 设置字体为新蒂香草體 */
+            font-family: '新蒂香草體', cursive;
+            opacity: 0; /* 初始透明度为0，完全隐藏 */
+            transition: opacity 1.5s ease; /* 淡入淡出效果，1.5秒过渡 */
         }
+
         .overlay h2 {
-            font-size: 60px; /* 标题大小为36 */
+            font-size: 60px;
         }
+
         .overlay p {
-            font-size: 40px; /* 字体大小为24 */
+            font-size: 40px;
             line-height: 1.5;
         }
+
         .image-link {
             text-align: center;
             margin-top: 20px;
         }
+
         .image-link img {
             width: 450px;
             height: auto;
@@ -55,6 +129,19 @@
     </style>
 </head>
 <body>
+    <!-- 加载动画容器 -->
+    <div class="loader-container">
+         <!-- 加载动画中的图片 -->
+        <img src="載入畫面.gif" alt="載入中" class="loading-image"><br>
+ <!-- 加载条 -->
+       
+ <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+      
+    </div>
+
+    <!-- 主要内容，稍后隐藏加载动画 -->
     <div class="cover">
         <img src="未命名 (450 × 350 像素) (14) (1).png" alt="封面图像">
     </div>
@@ -70,5 +157,25 @@
             </a>
         </div>
     </div>
+
+    <script>
+        // 使用 JavaScript 来在加载完成后隐藏加载动画和显示内容
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const loaderContainer = document.querySelector('.loader-container');
+                const overlay = document.querySelector('.overlay');
+
+                // 隐藏加载动画（透明度设为0）
+                loaderContainer.style.opacity = '0';
+
+                // 显示内容（透明度设为1）
+                overlay.style.opacity = '1';
+
+                setTimeout(function () {
+                    loaderContainer.style.display = 'none'; // 隐藏加载动画容器
+                }, 1500); // 延迟1.5秒后隐藏加载动画容器
+            }, 3000); // 延迟3秒后隐藏加载动画
+        });
+    </script>
 </body>
 </html>
