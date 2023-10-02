@@ -137,11 +137,14 @@
             font-size: 25px;
             line-height: 1.5;
         }  
-
+ .image-link img {
+                width: 100%; /* 图像宽度100%以适应小屏幕 */
+            }
             /* 调整加载动画大小 */
             .loading-image {
                 width: 200px;
                 height: 100px;
+                
                 animation: moveImage 3s linear reverse;
             }
              @keyframes moveImage {
