@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" href="fonts.css">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加viewport设置 -->
+
     <title>茹義學生涯小測驗</title>
     <style>
        /* 加载动画的样式 */
@@ -49,8 +51,8 @@
 
        /* 加载时的图片样式 */
 .loading-image {
-    width: 100px;
-    height: 50px;
+    width: 200px;
+    height: 100px;
     
   
   
@@ -125,6 +127,26 @@
             height: auto;
             display: block;
             margin: 0 auto;
+        }
+         @media (max-width: 768px) {
+            .overlay h2 {
+                font-size: 40px; /* 缩小标题字体大小 */
+            }
+
+            .overlay p {
+                font-size: 28px; /* 缩小段落字体大小 */
+            }
+
+            .image-link img {
+                width: 100%; /* 图像宽度100%以适应小屏幕 */
+            }
+
+            /* 调整加载动画大小 */
+            .loading-image {
+                width: 200px;
+                height: 100px;
+                animation: moveImage 3s linear reverse;
+            }
         }
     </style>
 </head>
