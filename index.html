@@ -147,6 +147,15 @@
                 height: 100px;
                 animation: moveImage 3s linear reverse;
             }
+             @keyframes moveImage {
+    0% {
+        transform: translateX(80%); /* 图片初始位置 */
+    }
+    100% {
+        transform: translateX(-50%); /* 图片移动到右侧 */
+    }
+}
+
         }
     </style>
 </head>
