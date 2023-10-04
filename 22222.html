@@ -7,6 +7,16 @@
     <meta charset="UTF-8">
     <title>測驗說明</title>
     <style>
+         /* 为视频设置样式 */
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
         body {
             margin: 0;
             padding: 0;
@@ -27,7 +37,7 @@
         }
 
         .welcome-section {
-            background-image: url('第二頁下圖.gif');
+            background-image: url('第二頁下圖.mp4');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -41,6 +51,10 @@
             line-height: 1.5;
               animation: fadeIn 1.5s ease forwards;
         }
+/* 禁用视频声音 */
+video::-webkit-media-controls-mute-button {
+    display: none;
+}
 
         /* 样式文本输入框 */
         .input-container {
@@ -138,6 +152,11 @@
     </style>
 </head>
 <body>
+     <!-- 添加视频 -->
+    <video autoplay loop muted>
+        <source src="下圖.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
     <div class="banner">
         測驗說明
     </div>
