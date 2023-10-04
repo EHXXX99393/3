@@ -8,14 +8,7 @@
     <title>測驗說明</title>
     <style>
          /* 为视频设置样式 */
-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-}
+
 
         body {
             margin: 0;
@@ -34,13 +27,14 @@ video {
             font-size: 150px;
             color: #000000;
              z-index: 999;
+            
+
         }
 
         .welcome-section {
-            background-image: url('第二頁下圖.mp4');
+            background: url('第二頁下圖.mp4');
+          background-color: rgba(255, 255, 255, 0.5);
             background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
             padding: 100px 0;
             text-align: center;
             font-family: '新蒂香草體', cursive;
@@ -50,7 +44,18 @@ video {
             white-space: pre-line;
             line-height: 1.5;
               animation: fadeIn 1.5s ease forwards;
+
         }
+.welcome-section video{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+opacity: 0.75;
+
+}
 /* 禁用视频声音 */
 video::-webkit-media-controls-mute-button {
     display: none;
@@ -111,31 +116,31 @@ video::-webkit-media-controls-mute-button {
         }
 
         /* 控制每行文字的淡入延迟，減少1.5秒 */
-        .welcome-section div:nth-child(1) {
+        .welcome-section div:nth-child(2) {
             animation-delay: 0s; /* 第一行延迟0秒 */
         }
 
-        .welcome-section div:nth-child(2) {
+        .welcome-section div:nth-child(3) {
             animation-delay: 0.5s; /* 第二行延迟0.5秒 */
         }
 
-        .welcome-section div:nth-child(3) {
+        .welcome-section div:nth-child(4) {
             animation-delay: 1s; /* 第三行延迟1秒 */
         }
 
-        .welcome-section div:nth-child(4) {
+        .welcome-section div:nth-child(5) {
             animation-delay: 1.5s; /* 第四行延迟1.5秒 */
         }
 
-        .welcome-section div:nth-child(5) {
+        .welcome-section div:nth-child(6) {
             animation-delay: 2s; /* 第五行延迟2秒 */
         }
 
-        .welcome-section div:nth-child(6) {
+        .welcome-section div:nth-child(7) {
             animation-delay: 2.5s; /* 第六行延迟2.5秒 */
         }
 
-        .welcome-section div:nth-child(7) {
+        .welcome-section div:nth-child(8) {
             animation-delay: 3s; /* 第七行延迟3秒 */
         }
 
@@ -152,16 +157,13 @@ video::-webkit-media-controls-mute-button {
     </style>
 </head>
 <body>
-     <!-- 添加视频 -->
-    <video autoplay loop muted>
-        <source src="第二頁下圖.mp4" type="video/mp4">
-        您的浏览器不支持视频标签。
-    </video>
+     
     <div class="banner">
         測驗說明
     </div>
     <div class="welcome-section">
-        <div>
+       <video src="第二頁下圖.mp4" autoplay muted loop></video>
+<div>
             歡迎您來做我們茹義學小測驗，
         </div>       <div>
             此測驗是小小編親自設計，
@@ -183,6 +185,40 @@ video::-webkit-media-controls-mute-button {
     </div>
 
     <script>
+function scaleAndFadeOut() {
+  var video = document.querySelector('.welcome-section video');
+
+  // 创建一个计时器，在1.5秒内执行动画
+  var duration = 1500; // 动画持续时间（毫秒）
+  var startTime = null;
+
+  function animate(currentTime) {
+    if (!startTime) {
+      startTime = currentTime;
+    }
+    var elapsedTime = currentTime - startTime;
+
+    // 计算放大比例和透明度
+    var scale = 1 + (elapsedTime / duration) * 0.5; // 1.5倍
+    var opacity = 0.75 - (elapsedTime / duration) * 0.65; // 透明度从0.75到0.1
+
+    // 应用放大和透明度
+    video.style.transform = `scale(${scale})`;
+    video.style.opacity = opacity;
+
+    if (elapsedTime < duration) {
+      // 继续执行动画
+      requestAnimationFrame(animate);
+    } else {
+      // 动画完成后，隐藏视频元素
+      video.style.display = 'none';
+    }
+  }
+
+  // 启动动画
+  requestAnimationFrame(animate);
+}
+
         // 檢查文字輸入框是否有輸入內容，啟用或禁用按鈕
         document.getElementById('nameInput').addEventListener('input', function () {
             var startButton = document.getElementById('startButton');
@@ -193,15 +229,45 @@ video::-webkit-media-controls-mute-button {
             }
         });
 
-        function startTest() {
-            var name = document.getElementById('nameInput').value;
+     function startTest() {
+    // 获取视频元素
+    var video = document.querySelector('video');
 
-            // 构建跳转链接，将name参数传递给下一个页面
-            var nextPageLink = `33333.html?name=${name}`;
+    // 创建一个计时器，每100毫秒增加视频的大小并降低透明度
+    var timer = setInterval(function () {
+        var currentScale = parseFloat(video.style.transform.replace('scale(', '').replace(')', '')) || 1;
+        var currentOpacity = parseFloat(video.style.opacity) || 1;
 
-            // 设置当前窗口的位置到下一个页面
-            window.location.href = nextPageLink;
+        // 在1.5秒内将视频放大1.5倍并降低透明度到0.1
+        if (currentScale < 2.5) {
+            currentScale += 0.02; // 每100毫秒增加0.02倍
+            currentOpacity -= 0.002; // 每100毫秒降低0.002透明度
+            video.style.transform = `scale(${currentScale})`;
+            video.style.opacity = currentOpacity;
+        } else {
+            clearInterval(timer); // 当达到目标后停止计时器
         }
+    }, 100);
+
+    // 延迟跳转
+    setTimeout(function () {
+        var name = document.getElementById('nameInput').value;
+        // 构建跳转链接，将name参数传递给下一个页面
+        var nextPageLink = `33333.html?name=${name}`;
+        // 设置当前窗口的位置到下一个页面
+        window.location.href = nextPageLink;
+    }, 1500); // 延迟1.5秒
+
+    // 隐藏按钮
+    var startButton = document.getElementById('startButton');
+    startButton.style.display = 'none';
+  // 调用视频动画函数
+  scaleAndFadeOut();
+}
+
     </script>
 </body>
 </html>
+
+
+
