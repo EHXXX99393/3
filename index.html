@@ -167,6 +167,15 @@ video::-webkit-media-controls-mute-button {
         transform: translateX(-50%); /* 图片移动到右侧 */
     }
 }
+               /* 添加视频样式 */
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* 将视频放在最底层 */
+        }
 
         }
     </style>
@@ -186,6 +195,11 @@ video::-webkit-media-controls-mute-button {
          <div class="loading-text">加载中...</div>
       
     </div>
+     <!-- 添加视频 -->
+    <video autoplay loop muted>
+        <source src="下圖.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
 
     <!-- 主要内容，稍后隐藏加载动画 -->
     <div class="cover">
