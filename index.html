@@ -76,17 +76,21 @@
 
 
         /* 其余的样式保持不变 */
-        body {
-            font-family: '新蒂香草體', cursive;
-           right:-15%；
-            width: 100%;
-          
-            padding: 0;
-            background-image: url('下圖.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+       body {
+    font-family: '新蒂香草體', cursive;
+    right: -15%;
+    width: 100%;
+    padding: 0;
+    background-color: white; /* 设置备用背景颜色为白色 */
+    background: url('下圖.mp4') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* 禁用视频声音 */
+video::-webkit-media-controls-mute-button {
+    display: none;
+}
 
         .cover {
             position: relative;
@@ -161,6 +165,10 @@
         }
     </style>
 </head>
+    <video autoplay loop muted>
+    <source src="下圖.mp4" type="video/mp4">
+</video>
+
 <body>
     <!-- 加载动画容器 -->
     <div class="loader-container">
