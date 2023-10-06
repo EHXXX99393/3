@@ -33,7 +33,21 @@
             
 
         }
+ /* 控制每个字母的淡入延迟 */
+        .fade-in-text {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 0.5s ease forwards;
+        }
 
+        /* 淡入动画 */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 .banner video{
   position: absolute;
   left:0;
@@ -169,7 +183,10 @@ video::-webkit-media-controls-mute-button {
      
     <div class="banner">
            <video src="上圖.mp4" autoplay muted loop></video>
-        測驗說明
+       <span class="fade-in-text">測</span>
+            <span class="fade-in-text">驗</span>
+            <span class="fade-in-text">說</span>
+            <span class="fade-in-text">明</span>
     </div>
     <div class="welcome-section">
        <video src="第二頁下圖.mp4" autoplay muted loop></video>
@@ -195,6 +212,12 @@ video::-webkit-media-controls-mute-button {
     </div>
 
     <script>
+          // JavaScript代码，用于设置每个字母的延迟
+        const textElements = document.querySelectorAll('.fade-in-text');
+
+        textElements.forEach((element, index) => {
+            element.style.animationDelay = `${index * 0.1}s`; // 每个字母延迟0.1秒
+        });
 function scaleAndFadeOut() {
   var video = document.querySelector('.welcome-section video');
 
