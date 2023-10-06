@@ -86,7 +86,8 @@
             white-space: pre-line;
             line-height: 1.5;
               animation: fadeIn 1.5s ease forwards;
-
+ -webkit-text-stroke: 1px white; /* 添加1px的黑色边框 */
+    text-stroke: 1px white; /* 添加1px的黑色边框 */
         }
 .welcome-section video{
   position: absolute;
@@ -240,7 +241,7 @@ video::-webkit-media-controls-mute-button {
         const textElements = document.querySelectorAll('.fade-in-text');
 
         textElements.forEach((element, index) => {
-            element.style.animationDelay = `${index * 0.1}s`; // 每个字母延迟0.1秒
+            element.style.animationDelay = `${index * 0.5}s`; // 每个字母延迟0.1秒
         });
 function scaleAndFadeOut() {
   var video = document.querySelector('.welcome-section video');
