@@ -96,12 +96,21 @@
   height: 100%;
   object-fit: cover;
 opacity: 0.75;
+            animation: slowDown 3s infinite alternate; /* 播放速度减慢的动画 */
 
 }
 /* 禁用视频声音 */
 video::-webkit-media-controls-mute-button {
     display: none;
 }
+            @keyframes slowDown {
+            0% {
+                playbackRate: 1; /* 正常速度 */
+            }
+            100% {
+                playbackRate: 0.5; /* 减慢一半的速度 */
+            }
+        }
 
         /* 样式文本输入框 */
         .input-container {
