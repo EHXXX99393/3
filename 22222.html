@@ -33,6 +33,21 @@
             
 
         }
+           /* 控制每个字母的淡入和持续上下移动动画 */
+        .continuous-move-text {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards, moveUpDown 3s infinite alternate;
+        }
+          /* 上下移动动画 */
+        @keyframes moveUpDown {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px); /* 调整移动的距离 */
+            }
+        }
  /* 控制每个字母的淡入延迟 */
         .fade-in-text {
             display: inline-block;
@@ -183,10 +198,10 @@ video::-webkit-media-controls-mute-button {
      
     <div class="banner">
            <video src="上圖.mp4" autoplay muted loop></video>
-       <span class="fade-in-text">測</span>
-            <span class="fade-in-text">驗</span>
-            <span class="fade-in-text">說</span>
-            <span class="fade-in-text">明</span>
+       <span class="fade-in-text,continuous-move-text">測</span>
+            <span class="fade-in-text,continuous-move-text">驗</span>
+            <span class="fade-in-text,continuous-move-text">說</span>
+            <span class="fade-in-text,continuous-move-text">明</span>
     </div>
     <div class="welcome-section">
        <video src="第二頁下圖.mp4" autoplay muted loop></video>
