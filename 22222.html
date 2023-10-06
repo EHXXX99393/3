@@ -31,7 +31,16 @@
             
 
         }
+.banner video{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
+
+}
         .welcome-section {
             background: url('第二頁下圖.mp4');
           background-color: rgba(255, 255, 255, 0.5);
@@ -149,18 +158,14 @@ video::-webkit-media-controls-mute-button {
         .rounded-button {
             animation-delay: 3.5s; /* 按钮延迟3.5秒 */
         }
-         @media (max-width: 768px) {
-              .banner {
-            text-align: center;
-            background-image: url('上圖2.png'); 
-                   width:100%；
+         
          
     </style>
 </head>
 <body>
      
     <div class="banner">
-           <video src="第二頁下圖.mp4" autoplay muted loop></video>
+           <video src="上圖.mp4" autoplay muted loop></video>
         測驗說明
     </div>
     <div class="welcome-section">
