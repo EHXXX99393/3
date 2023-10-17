@@ -2,14 +2,11 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加viewport设置 -->
-     <link rel="stylesheet"href="fonts.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css">
 
     <title>第<span id="aValue">2</span>題</title>
-   <style>
-  
-
-
+    <style>
         /* 共用样式 */
         body {
             margin: 0;
@@ -17,14 +14,34 @@
             font-family: '新蒂香草體', cursive;
             text-align: left;
             color: #000000;
+
             /* 删除原始背景图像设置，我们将在JavaScript中动态设置 */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-        }
+                
+}
+        .video-background {
+    position: fixed;
+    top: -10%;
+    left: 0;
+   
+    overflow: hidden;
+    z-index: -1; /* 将视频放在最底层 */
+}
 
+video {
+    object-fit: cover;
+width:100%;
+heigh:100%;
+}
         .container {
+             position: absolute; /* 添加这一行，使.container成为相对定位的容器 */
+    z-index: 1; /* 将.container的z-index设置得比视频高，以确保它在视频后面 */
             padding: 50px;
+
+    
+   justify-content: center; /* 水平居中 */
             text-align: center; /* 将容器内的文本和元素居中对齐 */
             opacity: 0; /* 初始設定容器不可見 */
             animation: fadeIn 1s forwards 1s; /* 淡入動畫，延遲0.5秒後開始 */
@@ -43,7 +60,7 @@
             font-family: '新蒂香草體', cursive; /* 将标题字体更改为文鼎中鋼筆行楷 */
             animation: fadeInUp 1s forwards 1s; /* 向上淡入動畫，延遲1秒後開始 */
         }
- 
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -71,8 +88,8 @@
         .button {
             width: 600px;
             height: 150px;
-font-family: '新蒂香草體', cursive;
-            line-height: 'front-size+5'px; /* 设置行高等于按钮高度，使文字垂直居中 */
+            font-family: '新蒂香草體', cursive;
+            line-height: 150px; /* 设置行高等于按钮高度，使文字垂直居中 */
             font-size: 50px;
             border-radius: 100px; /* 圆框 */
             background: linear-gradient(to right, #00BFFF, #FFFFFF); /* 随机渐变颜色，改为深蓝和浅蓝 */
@@ -81,13 +98,9 @@ font-family: '新蒂香草體', cursive;
             display: block;
             text-align: center; /* 水平居中 */
             margin-bottom: 50px; /* 添加下边距 */
-         /* 控制文本换行行为 */
-    white-space: normal; /* 或者设置为 normal，根据需要选择 */
-    
-    /* 设置按钮的最小高度 */
-    min-height: 100px; /* 或者根据需要的高度 */
-
- }
+            white-space: normal; /* 控制文本换行行为 */
+            min-height: 100px; /* 设置按钮的最小高度 */
+        }
 
         /* 新增樣式用於名字和您好 */
         .greeting-text {
@@ -118,24 +131,23 @@ font-family: '新蒂香草體', cursive;
             }
             .button {
                 font-size: 32px; /* 在螢幕寬度小於768px時，減小按鈕字體大小 */
-                 width: 100%;
+                width: 100%;
                 height: 15px; /* 更改按钮高度为120px */
                 line-height: 120%; /* 文字垂直居中 */
-                
             }
             .greeting-text {
-            font-size: 30px; /* 調整名字和"您好"的文字大小為45px */
-                }
+                font-size: 30px; /* 調整名字和"您好"的文字大小為45px */
+            }
         }
     </style>
 </head>
 <body>
-    
+ 
     <div class="container">
-        <h1>第  <span id="aValue">2</span>  題</h1>
-        <p>當遇到麻煩或不開心的事情時，誰會是讓你堅持下去的支柱？ </p> <!-- 添加内文文字 -->
-       
-         <div class="parameter-list" style="display: none;">
+        <h1>第 <span id="aValue">2</span> 題</h1>
+        <p>當遇到麻煩或不開心的事情時，誰會是讓你堅持下去的支柱？</p> <!-- 添加内文文字 -->
+
+        <div class="parameter-list" style="display: none;">
             <!-- 显示接收到的参数 -->
             <p>E: <span id="eValue">0</span></p>
             <p>N: <span id="nValue">0</span></p>
@@ -152,54 +164,52 @@ font-family: '新蒂香草體', cursive;
         </div>
 
         <div class="button-container">
-           <!-- 新增按钮，点击后执行指定操作 -->
-<button class="button" id="updateButton" disabled onclick="updateVariablesAndRedirect()">親朋好友 </button>
-<!-- 新增第二个按钮，点击后执行指定操作 -->
-<button class="button" id="secondButton"disabled onclick="updateIAndA()">我的信念 </button>
-
+            <!-- 新增按钮，点击后执行指定操作 -->
+            <button class="button" id="updateButton" disabled onclick="updateVariablesAndRedirect()">親朋好友 </button>
+            <!-- 新增第二个按钮，点击后执行指定操作 -->
+            <button class="button" id="secondButton" disabled onclick="updateIAndA()">我的信念 </button>
         </div>
     </div>
 
     <script>
+
         // 初始化 cancel 为空数组
         let cancel = [];
-         // 背景图像文件名数组
-        let backgroundImages = [
-            "1.png",
-            "2.png",
-            "3.png",
-            "4.png",
-            "5.png",
-            "6.png",
-            "7.png",
-            "8.png",
-            "9.png",
-            "10.png",
-            "11.png",
-            "12.png",
-            "13.png",
-            "14.png",
-            "15.png",
-            "16.png",
-            "17.png",
-            "18.png",
-            "19.png",
-            "20.png"
+        // 随机影片文件名数组
+        let videoFileNames = [
+            "1.mp4",
+            "2.mp4",
+            "3.mp4",
+            "4.mp4",
+            "5.mp4",
+            "6.mp4",
+            "7.mp4",
+            "8.mp4",
+            "9.mp4",
+            "10.mp4"
         ];
-         // 生成随机背景图像文件名
-        function generateRandomBackgroundImage() {
-            const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-            return backgroundImages[randomIndex];
+        // 生成随机视频文件名
+        function generateRandomVideoFileName() {
+            const randomIndex = Math.floor(Math.random() * videoFileNames.length);
+            return videoFileNames[randomIndex];
         }
 
-        // 设置随机背景图像
-        function setRandomBackgroundImage() {
-            const randomBackgroundImage = generateRandomBackgroundImage();
-            document.body.style.backgroundImage = `url('${randomBackgroundImage}')`;
-        }
+       // 设置随机背景视频
+function setRandomBackgroundVideo() {
+    const randomVideoFileName = generateRandomVideoFileName();
+    const videoElement = document.createElement("video");
+    videoElement.src = randomVideoFileName;
+    videoElement.autoplay = true;
+    videoElement.muted = true;
+    videoElement.loop = true;
+    document.body.appendChild(videoElement); // 将视频元素添加到页面中
+   
+}
 
-        // 在页面加载时设置随机背景图像
-        setRandomBackgroundImage();
+
+        // 在页面加载时设置随机背景视频
+        setRandomBackgroundVideo();
+
         // 获取前一页传递的参数
         const urlParams = new URLSearchParams(window.location.search);
         let E = parseInt(urlParams.get('E')) || 0;
@@ -257,7 +267,7 @@ font-family: '新蒂香草體', cursive;
             return availableFileNames[randomIndex];
         }
 
-       // 更新页面内容
+        // 更新页面内容
         function updatePageContent() {
             document.getElementById('eValue').textContent = E;
             document.getElementById('nValue').textContent = N;
@@ -274,7 +284,7 @@ font-family: '新蒂香草體', cursive;
             const randomFileName = generateRandomFileName();
             document.getElementById('randomFileValue').textContent = randomFileName;
 
-          // 如果随机文件名为空，更改选项一和选项二的传递参数为跳转到end.html
+            // 如果随机文件名为空，更改选项一和选项二的传递参数为跳转到end.html
             if (!randomFileName) {
                 document.getElementById('updateButton').onclick = redirectToEndPage;
                 document.getElementById('secondButton').onclick = redirectToEndPage;
@@ -315,14 +325,14 @@ font-family: '新蒂香草體', cursive;
             greetingText.textContent = name + '，您好';
             document.body.appendChild(greetingText); // 將歡迎詞添加到body
         }
-// 启用按钮淡入
-setTimeout(() => {
-    document.getElementById('updateButton').removeAttribute('disabled');
-}, 2000); // 延迟2秒启用按钮
-setTimeout(() => {
-    document.getElementById('secondButton').removeAttribute('disabled');
-}, 2000); // 延迟2秒启用按钮
 
+        // 启用按钮淡入
+        setTimeout(() => {
+            document.getElementById('updateButton').removeAttribute('disabled');
+        }, 2000); // 延迟2秒启用按钮
+        setTimeout(() => {
+            document.getElementById('secondButton').removeAttribute('disabled');
+        }, 2000); // 延迟2秒启用按钮
     </script>
 </body>
 </html>
