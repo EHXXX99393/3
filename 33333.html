@@ -188,43 +188,26 @@ background-color: rgba(255, 255, 255, 0.5);
 
     <script>
 
-       // 随机影片文件名数组
-let videoFileNames = [
-    "1.mp4",
-    "2.mp4",
-    "3.mp4",
-    "4.mp4",
-    "5.mp4",
-    "6.mp4",
-    "7.mp4",
-    "8.mp4",
-    "9.mp4",
-    "10.mp4"
-];
-
-// 生成随机视频文件名
-function generateRandomVideoFileName() {
-    const randomIndex = Math.floor(Math.random() * videoFileNames.length);
-    return videoFileNames[randomIndex];
-}
-
-// 检查是否满足特定条件 (窗口宽度小于或等于 768 像素)
-const shouldInsertOne = (window.innerWidth <= 768);
-
-// 定义一个函数来插入 "-1"
-function insertOne(fileName) {
-    const firstChar = fileName.charAt(0);
-    const secondChar = fileName.charAt(1);
-    const restOfFileName = fileName.slice(2);
-    return firstChar + '-1' + secondChar + restOfFileName;
-}
-
-// 获取随机生成的视频文件名
-const randomVideoFileName = generateRandomVideoFileName();
-
-// 如果满足特定条件，将文件名插入 "-1"，否则保持原文件名
-const finalVideoFileName = shouldInsertOne ? insertOne(randomVideoFileName) : randomVideoFileName;
-
+// 初始化 cancel 为空数组
+        let cancel = [];
+        // 随机影片文件名数组
+        let videoFileNames = [
+            "1.mp4",
+            "2.mp4",
+            "3.mp4",
+            "4.mp4",
+            "5.mp4",
+            "6.mp4",
+            "7.mp4",
+            "8.mp4",
+            "9.mp4",
+            "10.mp4"
+        ];
+        // 生成随机视频文件名
+        function generateRandomVideoFileName() {
+            const randomIndex = Math.floor(Math.random() * videoFileNames.length);
+            return videoFileNames[randomIndex];
+        }
 // 使用 finalVideoFileName 作为视频文件名进行设置
 const videoElement = document.createElement("video");
 videoElement.src = finalVideoFileName;
