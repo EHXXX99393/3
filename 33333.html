@@ -201,13 +201,7 @@ background-color: rgba(255, 255, 255, 0.5);
             const randomIndex = Math.floor(Math.random() * videoFileNames.length);
             return videoFileNames[randomIndex];
         }
-// 使用 finalVideoFileName 作为视频文件名进行设置
-const videoElement = document.createElement("video");
-videoElement.src = finalVideoFileName;
-videoElement.autoplay = true;
-videoElement.muted = true;
-videoElement.loop = true;
-document.body.appendChild(videoElement);
+
 
 
        // 设置随机背景视频
