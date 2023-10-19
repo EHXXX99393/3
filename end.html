@@ -15,6 +15,7 @@
             width: 100%;
             height: 100vh;
             overflow: hidden;
+ background-size: cover;
         }
 
         .background3 {
@@ -28,19 +29,21 @@
             z-index: 0;
             opacity: 0;
             animation: fadeInBackground3 1.5s ease-out 1s forwards;
+ background-size: cover; /* 让背景图片宽度自动调整以匹配元素的宽度 */
         }
 
         .back2 {
             position: absolute;
             top: -10%;
             left: 0;
-            width: 100%;
+            width: 120%;
             height: 100%;
             background-image: url('結果背景3.png');
             background-repeat: no-repeat;
             z-index: 3;
             opacity: 0;
             animation: fadeInBack2 1s ease-out 0.5s forwards;
+ background-size: 95% auto; /* 让背景图片宽度自动调整以匹配元素的宽度 */
         }
 
         .background1 {
@@ -54,6 +57,7 @@
             z-index: 2;
             opacity: 0;
             animation: fadeInBackground1 1.5s ease-out 1s forwards;
+ background-size: 95% auto; /* 让背景图片宽度自动调整以匹配元素的宽度 */
         }
 
         .container {
@@ -71,7 +75,6 @@
             font-family: '新蒂香草體', cursive;
             font-size: 120px;
             left: 300px;
-                        z-index: 1;
             opacity: 0;
             animation: fadeInText 0.5s ease-out 1.5s forwards;
         }
@@ -80,7 +83,6 @@
             flex: 1;
             padding: 20px;
             opacity: 0;
-                        z-index: 1;
             animation: fadeInImage 0.5s ease-out 2s forwards;
         }
 
@@ -204,10 +206,13 @@ transform: translateY(0%);
                 <img src="your-image-url.jpg" alt="Your Image">
             </div>
         </div>
+
     </div>
+<iframe id="myIframe" src="1111.html" width="100%" height="900" scrolling="no"></iframe>
 
     <script>
-        // 获取前一页传递的参数
+   
+         // 获取前一页传递的参数
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
         const S = parseInt(urlParams.get('S')) || 0;
@@ -248,72 +253,72 @@ transform: translateY(0%);
 
         switch (resultComparison) {
             case "ISFJ":
-                textToSet = "奉獻者";
+                textToSet = "火炬木";
                 imageSrc = "奉獻者型.png";
                 imageAlt = "奉獻者型";
                 break;
             case "ISTJ":
-                textToSet = "守護者";
+                textToSet = "磐石堅盾";
                 imageSrc = "守護者型.png";
                 imageAlt = "守護者型";
                 break;
             case "ESTJ":
-                textToSet = "統御者";
+                textToSet = "統御令";
                 imageSrc = "統御者型.png";
                 imageAlt = "統御者型";
                 break;
             case "ESFJ":
-                textToSet = "調化者";
+                textToSet = "雪中燈";
                 imageSrc = "調化者型.png";
                 imageAlt = "調化者型";
                 break;
             case "ISTP":
-                textToSet = "冒險家";
+                textToSet = "萬能鑰匙";
                 imageSrc = "冒險家型.png";
                 imageAlt = "冒險家型";
                 break;
             case "ISFP":
-                textToSet = "逍遙者";
+                textToSet = "飛天魔毯";
                 imageSrc = "逍遙者型.png";
                 imageAlt = "逍遙者型";
                 break;
             case "ESTP":
-                textToSet = "挑戰者";
+                textToSet = "領船鷁";
                 imageSrc = "挑戰者型.png";
                 imageAlt = "挑戰者型";
                 break;
             case "ESFP":
-                textToSet = "耀光者";
+                textToSet = "耀光星";
                 imageSrc = "耀光者型.png";
                 imageAlt = "耀光者型";
                 break;
             case "INFJ":
-                textToSet = "文筆仙";
+                textToSet = "冰晶蓮花";
                 imageSrc = "文筆仙型.png";
                 imageAlt = "文筆仙型";
                 break;
             case "INFP":
-                textToSet = "調靈者";
+                textToSet = "自然領域";
                 imageSrc = "調靈者型.png";
                 imageAlt = "調靈者型";
                 break;
             case "ENFJ":
-                textToSet = "育化者";
+                textToSet = "向陽杖";
                 imageSrc = "育化者型.png";
                 imageAlt = "育化者型";
                 break;
             case "ENFP":
-                textToSet = "夢想家";
+                textToSet = "行空天馬";
                 imageSrc = "夢想家型.png";
                 imageAlt = "夢想家型";
                 break;
             case "INTJ":
-                textToSet = "專業者";
+                textToSet = "雷電神矛";
                 imageSrc = "專業者型.png";
                 imageAlt = "專業者型";
                 break;
             case "INTP":
-                textToSet = "學術家";
+                textToSet = "量子電腦";
                 imageSrc = "學術家型.png";
                 imageAlt = "學術家型";
                 break;
