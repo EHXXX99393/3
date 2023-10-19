@@ -1,15 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加viewport设置 -->
-      <link rel="stylesheet"href="fonts.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css">
 
     <title>第<span id="aValue">2</span>題</title>
-   <style>
-  
-
-
+    <style>
         /* 共用样式 */
         body {
             margin: 0;
@@ -17,15 +15,44 @@
             font-family: '新蒂香草體', cursive;
             text-align: left;
             color: #000000;
+          overflow: hidden;
             /* 删除原始背景图像设置，我们将在JavaScript中动态设置 */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-        }
+                
+}
+     .video-background {
+    position: fixed;
+width:100%;
+heigh:100%;
+background-size:cover;
+    left: 0;
+    z-index: -1; /* 将视频放在最底层 */
+}
 
+video {
+    object-fit: cover;
+width:100%;
+heigh:100%vh;
+background-size:cover;
+}
         .container {
-            padding: 50px;
+             position: absolute; /* 添加这一行，使.container成为相对定位的容器 */
+    z-index: 1; /* 将.container的z-index设置得比视频高，以确保它在视频后面 */
+          
+background-color: rgba(255, 255, 255, 0.75);
+        top: 5%; /* 垂直居中 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, -0%); /* 使用transform来居中 */
+           
+            border-radius: 20px; /* 创建椭圆形状，可以调整半径大小 */
+    width: 90%; /* 设置元素的宽度 */
+    height: botton; /* 设置元素的高度 */
+           
+   justify-content: center; /* 水平居中 */
             text-align: center; /* 将容器内的文本和元素居中对齐 */
+             padding-top: -50%; 
             opacity: 0; /* 初始設定容器不可見 */
             animation: fadeIn 1s forwards 1s; /* 淡入動畫，延遲0.5秒後開始 */
         }
@@ -37,13 +64,14 @@
         }
 
         h1 {
+            top:-10%;
             font-size: 55px; /* 标题字体大小改为 48px */
             font-weight: bold; /* 粗体 */
             color: #000000;
             font-family: '新蒂香草體', cursive; /* 将标题字体更改为文鼎中鋼筆行楷 */
             animation: fadeInUp 1s forwards 1s; /* 向上淡入動畫，延遲1秒後開始 */
         }
- 
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -69,10 +97,12 @@
         }
 
         .button {
+             opacity: 0; /* 初始設定按鈕不可見 */
+            animation: fadeInUp 1s forwards 2s; /* 向上淡入動畫，延遲1.5秒後開始 */
             width: 600px;
             height: 150px;
-font-family: '新蒂香草體', cursive;
-            line-height: 'front-size+5'px; /* 设置行高等于按钮高度，使文字垂直居中 */
+            font-family: '新蒂香草體', cursive;
+            line-height: 'front-size+5'px;
             font-size: 50px;
             border-radius: 100px; /* 圆框 */
             background: linear-gradient(to right, #00BFFF, #FFFFFF); /* 随机渐变颜色，改为深蓝和浅蓝 */
@@ -81,13 +111,9 @@ font-family: '新蒂香草體', cursive;
             display: block;
             text-align: center; /* 水平居中 */
             margin-bottom: 50px; /* 添加下边距 */
-         /* 控制文本换行行为 */
-    white-space: normal; /* 或者设置为 normal，根据需要选择 */
-    
-    /* 设置按钮的最小高度 */
-    min-height: 100px; /* 或者根据需要的高度 */
-
- }
+            white-space: normal; /* 控制文本换行行为 */
+            min-height: 100px; /* 设置按钮的最小高度 */
+        }
 
         /* 新增樣式用於名字和您好 */
         .greeting-text {
@@ -96,8 +122,9 @@ font-family: '新蒂香草體', cursive;
             opacity: 0; /* 初始設定歡迎詞不可見 */
             animation: fadeInUp 1s forwards 0.5s; /* 向上淡入動畫，延遲1秒後開始 */
             position: absolute; /* 絕對定位 */
-            top: 10px; /* 上方位置 */
-            left: 10px; /* 左方位置 */
+            top: 10%; /* 上方位置 */
+            left: 10%; /* 左方位置 */
+            z-index:999;
         }
 
         .parameter-list {
@@ -110,6 +137,13 @@ font-family: '新蒂香草體', cursive;
 
         /* 使用媒體查詢調整字體大小和按鈕寬度 */
         @media (max-width: 768px) {
+            body{
+                background-image: url('1.png');
+            }
+            video {
+                display: none; /* 在小於 768px 寬度時隱藏影片 */
+            }
+            
             h1 {
                 font-size: 36px; /* 在螢幕寬度小於768px時，減小標題字體大小 */
             }
@@ -118,16 +152,16 @@ font-family: '新蒂香草體', cursive;
             }
             .button {
                 font-size: 32px; /* 在螢幕寬度小於768px時，減小按鈕字體大小 */
-                 width: 100%;
+                width: 100%;
                 height: 15px; /* 更改按钮高度为120px */
                 line-height: 120%; /* 文字垂直居中 */
-                
             }
             .greeting-text {
-            font-size: 30px; /* 調整名字和"您好"的文字大小為45px */
-                }
+                font-size: 30px; /* 調整名字和"您好"的文字大小為45px */
+            }
         }
     </style>
+
 </head>
 <body>
     
@@ -162,44 +196,41 @@ font-family: '新蒂香草體', cursive;
 
     <script>
         // 初始化 cancel 为空数组
-        let cancel = [];
-         // 背景图像文件名数组
-        let backgroundImages = [
-            "1.png",
-            "2.png",
-            "3.png",
-            "4.png",
-            "5.png",
-            "6.png",
-            "7.png",
-            "8.png",
-            "9.png",
-            "10.png",
-            "11.png",
-            "12.png",
-            "13.png",
-            "14.png",
-            "15.png",
-            "16.png",
-            "17.png",
-            "18.png",
-            "19.png",
-            "20.png"
-        ];
-         // 生成随机背景图像文件名
-        function generateRandomBackgroundImage() {
-            const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-            return backgroundImages[randomIndex];
-        }
 
-        // 设置随机背景图像
-        function setRandomBackgroundImage() {
-            const randomBackgroundImage = generateRandomBackgroundImage();
-            document.body.style.backgroundImage = `url('${randomBackgroundImage}')`;
-        }
+// 初始化 cancel 为空数组
+let cancel = [];
+// 随机影片文件名数组
+let videoFileNames = [
+    "1.mp4",
+    "2.mp4",
+    "3.mp4",
+    "4.mp4",
+    "5.mp4",
+    "6.mp4",
+    "7.mp4",
+    "8.mp4",
+    "9.mp4",
+    "10.mp4"
+];
+// 生成随机视频文件名
+function generateRandomVideoFileName() {
+    const randomIndex = Math.floor(Math.random() * videoFileNames.length);
+    return videoFileNames[randomIndex];
+}
+// 设置随机背景视频
+function setRandomBackgroundVideo() {
+    const randomVideoFileName = generateRandomVideoFileName();
+    const videoElement = document.createElement("video");
+    videoElement.src = randomVideoFileName;
+    videoElement.autoplay = true;
+    videoElement.muted = true;
+    videoElement.loop = true;
+    document.body.appendChild(videoElement);
+}
+// 在页面加载时设置随机背景视频
+setRandomBackgroundVideo();
 
-        // 在页面加载时设置随机背景图像
-        setRandomBackgroundImage();
+
         // 获取前一页传递的参数
         const urlParams = new URLSearchParams(window.location.search);
         let E = parseInt(urlParams.get('E')) || 0;
