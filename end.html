@@ -145,6 +145,15 @@ transform: translateY(0%);
         }
 
 @media screen and (max-width: 768px) {
+           .background3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vh;
+            height: auto;
+          
+ background-size: auto; /* 让背景图片宽度自动调整以匹配元素的宽度 */
+        }
     .container {
         display: flex;
         flex-direction: column;
@@ -153,6 +162,7 @@ transform: translateY(0%);
 
     .image {
         top: 0;
+        margin-bottom:100px;
     }
 
     img {
