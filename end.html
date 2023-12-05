@@ -144,30 +144,33 @@ transform: translateY(0%);
             }
         }
 
-        @media screen and (max-width: 768px) {
-                    .image {
-            max-width:45%;
-        }
-            img {
-    width: 50%;
-    height: auto; /* 保持原始寬高比例 */
+   @media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 居中對齊 */
+    }
+
+    .image {
+        max-width: 45%;
+    }
+
+    img {
+        width: 50%;
+        height: auto;
+    }
+
+    .text {
+        font-size: 30px;
+    }
+
+    .greeting-text {
+        font-size: 15px;
+        top: 50px;
+        left: 100px;
+    }
 }
 
-  .text {
-
-            font-size: 30px;
-            left: 10px;
-
-        }
-
-             .greeting-text {
-            
-            font-size: 15px;
-         
-            top: 50px;
-            left: 100px;
-        }
-        }
     </style>
 </head>
 <body>
