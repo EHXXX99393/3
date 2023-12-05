@@ -136,6 +136,7 @@ background-color: rgba(255, 255, 255, 0.75);
         }
 
         /* 使用媒體查詢調整字體大小和按鈕寬度 */
+       /* 使用媒體查詢調整字體大小和按鈕寬度 */
         @media (max-width: 768px) {
             body{
                 background-image: url('1.gif');
@@ -143,12 +144,15 @@ background-color: rgba(255, 255, 255, 0.75);
             video {
                 display: none; /* 在小於 768px 寬度時隱藏影片 */
             }
+            container{
+                top:20%;
+            }
             
             h1 {
-                font-size: 36px; /* 在螢幕寬度小於768px時，減小標題字體大小 */
+                font-size: 24px; /* 在螢幕寬度小於768px時，減小標題字體大小 */
             }
             p {
-                font-size: 36px; /* 在螢幕寬度小於768px時，減小內文文字大小 */
+                font-size: 20px; /* 在螢幕寬度小於768px時，減小內文文字大小 */
             }
             .button {
                 font-size: 32px; /* 在螢幕寬度小於768px時，減小按鈕字體大小 */
@@ -157,7 +161,9 @@ background-color: rgba(255, 255, 255, 0.75);
                 line-height: 120%; /* 文字垂直居中 */
             }
             .greeting-text {
-                font-size: 30px; /* 調整名字和"您好"的文字大小為45px */
+                font-size: 30px; 
+                top:1%;
+                /* 調整名字和"您好"的文字大小為45px */
             }
         }
     </style>
