@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Personality Type</title>
+    <link rel="stylesheet" href="fonts.css">
+
+    <!-- 其他head內容 -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .background3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 250%;
+            background-image: url('結果背景4.png');
+            background-repeat: no-repeat;
+            z-index: 0;
+            opacity: 0;
+            animation: fadeInBackground3 1.5s ease-out 1s forwards;
+            background-size: cover;
+        }
+
+        .background1 {
+            position: absolute;
+            top: 0%;
+            left: 1%;
+            width: 100%;
+            height: 400px;
+            background-image: url('結果背景1-1.png');
+            background-repeat: no-repeat;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInBackground1 1.5s ease-out 1s forwards;
+            background-size: 95% auto;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            font-family: '新蒂香草體', cursive;
+            font-size: 60px;
+            border: none;
+            border-radius: 25px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+background-image: url('按鈕5.png');
+background:cover;
+        }
+
+        .content-container {
+            position: absolute;
+            margin-top: -2%;
+            left: 20%;
+            width: 59.3%;
+            display: none;
+            background-color: white;
+            padding: 5px;
+            border-radius: 10px;
+             text-align: left;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            font-family: '新蒂香草體', cursive;
+            font-size: 50px;
+ background-image: url('文字區塊.png');
+background:cover;
+        }
+
+        .container2 {
+            margin-top: 5%;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .button2 {
+            width: 100%;
+            padding: 15px;
+            font-family: '新蒂香草體', cursive;
+            font-size: 60px;
+            border: none;
+            border-radius: 25px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            z-index: 2;
+background-image: url('按鈕1-2.png');
+background:cover;
+        }
+
+        .content-container2 {
+            margin-top: -3%;
+            width: 95.5%;
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            font-family: '新蒂香草體', cursive;
+            font-size: 45px;
+ background-image: url('文字區塊.png');
+background:cover;
+        }
+.content-container2 p{
+width:100%;
+right:0%;
+text-align: justify;
+
+       }
+
+        .container3 {
+            margin-top: 13%;
+            position: absolute;
+            top: calc(43% + 20px); /* 設定初始位置，與第一文字區塊的位置相對應 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            animation: moveContainer3Up 0.5s ease-out forwards; /* 初始時向上移動 */
+        }
+
+        .button3 {
+            width: 100%;
+            padding: 15px;
+            font-family: '新蒂香草體', cursive;
+            font-size: 60px;
+            border: none;
+            border-radius: 25px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            z-index: 2;
+background-image: url('按鈕1-3.png');
+background:cover;
+        }
+
+        .content-container3 {
+            margin-top: -3%;
+            width: 95.5%;
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            font-family: '新蒂香草體', cursive;
+            font-size: 45px;
+ background-image: url('文字區塊.png');
+background:cover;
+        }
+.content-container3 p{
+width:100%;
+right:0%;
+text-align: justify;
+
+       }
+
+        @keyframes fadeInBackground3 {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInBackground1 {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInContent {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+       @keyframes fadeOutContent {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+    @keyframes moveContainer2Down {
+            from {
+                top: calc(12.5%);
+            }
+            to {
+                top: calc(23%);
+            }
+        }
+
+        @keyframes moveContainer2Up {
+            from {
+                top: calc(23% );
+            }
+            to {
+                top: calc(12.5%);
+            }
+        }
+
+        @keyframes slideOutContent {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes moveContainer3Down {
+            from {
+                top: calc(0% );
+            }
+            to {
+                top: calc(60%); /* 設定向下移動的最終位置 */
+            }
+        }
+
+        @keyframes moveContainer3Up {
+            from {
+                top: calc(60%); /* 設定向上移動的最終位置 */
+            }
+            to {
+                top: calc(0% );
+            }
+        }
+.container4 {
+    margin-top: 13%;
+    position: absolute;
+    top: calc(60% + 20px); /* 設定初始位置，與第三文字區塊的位置相對應 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    animation: moveContainer4Up 0.5s ease-out forwards; /* 初始時向上移動 */
+}
+
+.button4 {
+    width: 100.5%;
+    padding: 15px;
+    font-family: '新蒂香草體', cursive;
+    font-size: 60px;
+    border: none;
+    border-radius: 25px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+ background-image: url('按鈕1-4.png');
+background:cover;
+}
+
+.content-container4 {
+    margin-top: -3%;
+    width: 95.5%;
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+     text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: '新蒂香草體', cursive;
+    font-size: 45px;
+     background-image: url('文字區塊.png');
+background:cover;
+}
+
+.content-container4 p{
+width:100%;
+right:0%;
+text-align: justify;
+    letter-spacing: 2px; /* 設定文字間距 */
+       }
+
+@keyframes moveContainer4Down {
+    from {
+        top: calc(0%);
+    }
+    to {
+        top: calc(63%); /* 設定向下移動的最終位置 */
+    }
+}
+
+@keyframes moveContainer4Up {
+    from {
+        top: calc(63%); /* 設定向上移動的最終位置 */
+    }
+    to {
+        top: calc(0%);
+    }
+}
+ .expand-button {
+        position: fixed;
+        top: 30px;
+        right: 10px;
+        padding: 10px;
+        font-family: '新蒂香草體', cursive;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3498db;
+        color: white;
+        cursor: pointer;
+        z-index: 4;
+    }
+img {
+    width: 20%;
+    height: auto;
+right:0%;
+float:left;
+margin-right:10px;
+margin-top:3%;
+}
+   /* 新增收起按鈕的樣式 */
+        .collapse-button {
+            position: fixed;
+            bottom: 30px;
+            right: 10px;
+            padding: 10px;
+            font-family: '新蒂香草體', cursive;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e74c3c; /* 使用不同的顏色來標示收起按鈕 */
+            color: white;
+            cursor: pointer;
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background3"></div>
+    <div class="background1"></div>
+    <div class="button-container">
+        <button class="button" onclick="toggleContent()">評語</button>
+    </div>
+    <div id="content" class="content-container">
+        <p>內向安靜，思路清晰，好奇心旺盛，見解獨到且創新</p>
+    </div>
+
+    <div class="container2">
+        <button class="button2" onclick="toggleContent2()">優勢能力</button>
+        <div id="content2" class="content-container2">
+  <img src="優點5.png" alt="Your Image" >
+            
+<p>擅於思考、邏輯能力佳、願意實踐、保守穩定、冷靜、運作速度快
+</p>
+       
+        </div>
+  <div class="container3">
+        <button class="button3" onclick="toggleContent3()">其他特性</button>
+        <div id="content3" class="content-container3">
+            <img src="特性5.png" alt="Your Image">
+           
+ <p>難以維持熱度、易分心、思路不好捉摸、適合專案工作
+</p>
+        </div>
+<!-- 新增容器四 -->
+<div class="container4">
+    <button class="button4" onclick="toggleContent4()">適合職業</button>
+    <div id="content4" class="content-container4">
+        <p>警消人員、IT程式員、醫療技術員(放射師、醫療材料)、軟體開發
+</p>
+            <img src="適合職業5.png" alt="Your Image"style="width:80%;  margin-left:10%;margin-top:-5%;
+">
+    </div>
+</div>
+
+    </div>
+    </div>
+<!-- 新增展開全部的按鈕 -->
+<div class="expand-button" onclick="expandAll()">展開全部</div>
+
+     <!-- 新增收起按鈕 -->
+    <div class="collapse-button" onclick="collapseAll()">收起全部</div>
+
+  
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // 模擬點擊第一按鈕兩次
+    toggleContent();
+    toggleContent();
+
+    // 模擬點擊第二按鈕兩次
+    toggleContent2();
+    toggleContent2();
+
+    // 模擬點擊第三按鈕兩次
+    toggleContent3();
+    toggleContent3();
+
+    // 模擬點擊第四按鈕兩次
+    toggleContent4();
+    toggleContent4();
+});
+
+
+    // 初始位置
+    var container3InitialTop = document.querySelector('.container3').style.top;
+
+          function toggleContent() {
+            var content = document.getElementById('content');
+            var container2 = document.querySelector('.container2');
+
+            if (content.style.display === 'block') {
+                content.style.animation = 'fadeOutContent 0.5s ease-out';
+                setTimeout(function () {
+                    content.style.display = 'none';
+                }, 500);
+
+                // 當 content 隱藏時，將 container2 重置到初始位置
+                container2.style.animation = 'moveContainer2Up 0.5s ease-out forwards';
+            } else {
+                content.style.display = 'block';
+                content.style.animation = 'slideInContent 0.5s ease-out';
+
+                var rect = document.querySelector('.button').getBoundingClientRect();
+                content.style.left = rect.left + 'px';
+                content.style.top = rect.bottom + 'px';
+
+                // 根據 container2 的當前位置，將其向下或向上移動30%
+                var container2Top = container2.style.top;
+                if (container2Top === container3InitialTop) {
+                    container2.style.animation = 'moveContainer2Down 0.5s ease-out forwards';
+                } else {
+                    container2.style.animation = 'moveContainer2Up 0.5s ease-out forwards';
+                }
+            }
+        }
+
+
+    function toggleContent2() {
+        var content2 = document.getElementById('content2');
+        var button2 = document.querySelector('.button2');
+        var container3 = document.querySelector('.container3');
+
+        if (content2.style.display === 'block') {
+            content2.style.animation = 'slideOutContent 0.5s ease-out';
+            setTimeout(function () {
+                content2.style.display = 'none';
+            }, 500);
+
+            // 當content2隱藏時，將container3重置到初始位置
+            container3.style.animation = 'moveContainer3Up 0.5s ease-out forwards';
+        } else {
+            content2.style.display = 'block';
+            content2.style.animation = 'slideInContent 0.5s ease-out';
+
+            var rect = button2.getBoundingClientRect();
+            content2.style.left = rect.left + 'px';
+            content2.style.top = rect.bottom + 'px';
+
+            // 根據container3的當前位置，將其向下或向上移動30%
+            var container3Top = container3.style.top;
+            if (container3Top === container3InitialTop) {
+                container3.style.animation = 'moveContainer3Down 0.5s ease-out forwards';
+            } else {
+                container3.style.animation = 'moveContainer3Up 0.5s ease-out forwards';
+            }
+        }
+    }
+
+var container4 = document.querySelector('.container4');
+
+function toggleContent3() {
+    var content3 = document.getElementById('content3');
+    var button3 = document.querySelector('.button3');
+
+    if (content3.style.display === 'block') {
+        content3.style.animation = 'slideOutContent 0.5s ease-out';
+        setTimeout(function () {
+            content3.style.display = 'none';
+        }, 500);
+
+        // 當 content3 隱藏時，將 container4 重置到初始位置
+        container4.style.animation = 'moveContainer4Up 0.5s ease-out forwards';
+    } else {
+        content3.style.display = 'block';
+        content3.style.animation = 'slideInContent 0.5s ease-out';
+
+        var rect = button3.getBoundingClientRect();
+        content3.style.left = rect.left + 'px';
+        content3.style.top = rect.bottom + 'px';
+
+        // 根據 container4 的當前位置，將其向下或向上移動30%
+        var container4Top = container4.style.top;
+        if (container4Top === container3InitialTop) {
+            container4.style.animation = 'moveContainer4Down 0.5s ease-out forwards';
+        } else {
+            container4.style.animation = 'moveContainer4Up 0.5s ease-out forwards';
+        }
+    }
+}
+
+// 新增 toggleContent4 函數，用於處理按鈕四的動作
+function toggleContent4() {
+    var content4 = document.getElementById('content4');
+    var button4 = document.querySelector('.button4');
+
+    if (content4.style.display === 'block') {
+        content4.style.animation = 'slideOutContent 0.5s ease-out';
+        setTimeout(function () {
+            content4.style.display = 'none';
+        }, 500);
+    } else {
+        content4.style.display = 'block';
+        content4.style.animation = 'slideInContent 0.5s ease-out';
+
+        var rect = button4.getBoundingClientRect();
+        content4.style.left = rect.left + 'px';
+        content4.style.top = rect.bottom + 'px';
+    }
+}
+        function expandAll() {
+            // 展開全部的功能實現
+            toggleContent();
+            toggleContent2();
+            toggleContent3();
+            toggleContent4();
+
+            // 關閉展開全部按鈕，開啟收起全部按鈕
+            document.querySelector('.expand-button').style.display = 'none';
+            document.querySelector('.collapse-button').style.display = 'block';
+        }
+
+        function collapseAll() {
+            // 收起全部的功能實現
+            var content = document.getElementById('content');
+            var content2 = document.getElementById('content2');
+            var content3 = document.getElementById('content3');
+            var content4 = document.getElementById('content4');
+
+            if (content.style.display === 'block') {
+                toggleContent();
+            }
+            if (content2.style.display === 'block') {
+                toggleContent2();
+            }
+            if (content3.style.display === 'block') {
+                toggleContent3();
+            }
+            if (content4.style.display === 'block') {
+                toggleContent4();
+            }
+
+            // 關閉收起全部按鈕，開啟展開全部按鈕
+            document.querySelector('.expand-button').style.display = 'block';
+            document.querySelector('.collapse-button').style.display = 'none';
+        }
+</script>
+
+</body>
+
+</html>
